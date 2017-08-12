@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.newsfeed {
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.nav {
+  margin-bottom: 0px !important;
+}
+
+.navheader {
+  font-family: 'Plaster', cursive;
+  font-size: 35px;
+  margin-bottom: 0px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes blinker {
+  50% { opacity: 0.0; }
+}
+
+.wordcloud {
+  background-color: black !important;
+}
+
+.header {
+  font-family: 'Plaster';
+  font-size: 20px;
+  margin-bottom: 0px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*.background {
+  background-color: gray;
+}*/
+
+.accordion {
+  background: transparent !important;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("http://www.wallmaya.com/wp-content/uploads/2016/03/vintage-newspaper-wallpaper-wide-awesome.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*.articles {
+  background-image: url("http://www.wallmaya.com/wp-content/uploads/2016/03/vintage-newspaper-wallpaper-wide-awesome.jpg") !important;
+}*/
+
+/*"https://ak8.picdn.net/shutterstock/videos/7118800/thumb/1.jpg"
+http://www.easywallprints.com/upload/designs/newspaper-concept-background-zoom-1.jpg
+http://l7.alamy.com/zooms/1345f8c1085846ffb34cb093e73018f5/grungy-newspaper-background-f0x18h.jpg*/
