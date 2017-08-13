@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Article from '../Components/Article'
-import { Item, Segment } from 'semantic-ui-react'
+import { Item, Segment, Loader, Dimmer, Button } from 'semantic-ui-react'
 
 
 
 export default class ArticlesContainer extends Component {
 
-
+renderLoader = () => {
+  this.props.articles[0] ? null : <Loader active inverted inline='centered' size='massive' content='Fetching News'/>
+}
 
 
   render() {
@@ -24,9 +26,13 @@ export default class ArticlesContainer extends Component {
             <Item.Header className='newsfeed'>NewsFeed</Item.Header>
           </Segment>
         </div>
-        <Item.Group divided>
+        <Item.Group relaxed>
+          {this.renderLoader}
           {articles}
         </Item.Group>
+        <Segment className='moreArticles' textAlign='center'>
+          <Button basic inverted onClick={this.props.fetchArticles}>Click for More</Button>
+        </Segment>
       </div>
     )
   }

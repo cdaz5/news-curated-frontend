@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  height: 100%;
 }
 
 .newsfeed {
@@ -9,10 +10,27 @@ body {
   font-size: xx-large;
   font-weight: bold;
   font-style: italic;
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 20px;
+  background-color: rgb(20, 27, 53) !important;
+  color: white;
+  z-index: 999 !important;
 }
+
+.height {
+  height: 1000px !important;
+}
+
+
 
 .nav {
   margin-bottom: 0px !important;
+  background-color: rgb(4, 4, 8) !important;
+  /*position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 20px;*/
+  /*z-index: 999 !important;*/
 }
 
 .navheader {
@@ -47,12 +65,14 @@ body {
 
 .accordion {
   background: transparent !important;
+  color: white !important;
 }
 
 .parallax {
     /* The image used */
-    background-image: url("http://www.wallmaya.com/wp-content/uploads/2016/03/vintage-newspaper-wallpaper-wide-awesome.jpg");
+    background-image: url("https://ak9.picdn.net/shutterstock/videos/2729330/thumb/1.jpg");
 
+/*https://previews.123rf.com/images/roystudio/roystudio1205/roystudio120500010/13694677-white-brick-wall-background-or-texture-Stock-Photo.jpg*/
     /* Full height */
     height: 100%;
 
@@ -63,9 +83,23 @@ body {
     background-size: cover;
 }
 
-/*.articles {
-  background-image: url("http://www.wallmaya.com/wp-content/uploads/2016/03/vintage-newspaper-wallpaper-wide-awesome.jpg") !important;
+.moreArticles {
+  background: transparent !important;
+}
+
+/*.articleLink {
+  color: black !important;
 }*/
+
+/*.articles {
+  background-color: white !important;
+}*/
+
+.articles {
+  background-image: url("http://uzaykasifi.com/wp-content/uploads/2016/03/simple-star-space-background-effect-videos-23768149-hd-stock.jpg") !important;
+  border-radius: 15px 50px !important;
+  padding: 20px !important;
+}
 
 /*"https://ak8.picdn.net/shutterstock/videos/7118800/thumb/1.jpg"
 http://www.easywallprints.com/upload/designs/newspaper-concept-background-zoom-1.jpg

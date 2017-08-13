@@ -19,7 +19,7 @@ export default class FavoritesContainer extends Component {
             <Item.Header className='newsfeed'>Favorites <Icon name='like' color='red'/></Item.Header>
           </Segment>
         </div>
-        <Item.Group divided>
+        <Item.Group relaxed>
           {this.renderSavedArticles()}
         </Item.Group>
       </div>

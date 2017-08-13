@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Accordion, Button, Icon, Image as ImageComponent, Item, Label, Card } from 'semantic-ui-react'
+import { Loader, Accordion, Button, Icon, Image as ImageComponent, Item, Label, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 
@@ -48,17 +48,19 @@ export default class Article extends Component {
     const summary = this.props.article.summary.sentences.map((sentence, idx) => { return <li key={idx}>{sentence}</li>})
     return (
       <Item className='articles'>
-        <Item.Image src={this.renderPic()}/>
+
+        <Item.Image size='medium' src={this.renderPic()}/>
         <Item.Content>
-          <Item.Header><Link to={this.props.article.links.permalink} target="_blank">{this.props.article.title}</Link></Item.Header>
+          <Item.Header><Link to={this.props.article.links.permalink} target="_blank" className='articleLink'>{this.props.article.title}</Link></Item.Header>
           <Item.Meta>
             <Label><Icon color='blue' name='facebook official'/>{this.renderFbShares()}</Label>
             <Label><Icon color='blue' name='linkedin square'/>{this.renderLinkedinShares()}</Label>
-            <Label></Label>
+            <Label floated='right'><Icon floated='right' name='like' onClick={() => {this.props.handleSaveArticle(this.props.article)}} /></Label>
           </Item.Meta>
           <Item.Description>
+
             <Accordion fluid styled className='accordion'>
-              <Accordion.Title>
+              <Accordion.Title className='accordion'>
                 <Icon name='dropdown' />
                 Article Summary
               </Accordion.Title>

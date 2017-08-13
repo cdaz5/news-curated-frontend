@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Grid, Image } from 'semantic-ui-react';
 import ArticlesContainer from './ArticlesContainer';
 import FavoritesContainer from './FavoritesContainer';
+import Weather from '../Components/WeatherWidget';
+import { OpenWeatherMap } from 'react-weather';
 
 
 
@@ -9,7 +11,8 @@ export default class AppConatiner extends Component {
 
   state = {
     articles: [],
-    savedArticles: []
+    savedArticles: [],
+    nextPageCursor: ''
   }
 
   deleteSavedArticle = (deleteArticle) => {
@@ -33,18 +36,22 @@ export default class AppConatiner extends Component {
   }
 
   fetchArticles = () => {
+    const cursor = {nextPageCursor: this.state.nextPageCursor}
+    // debugger
     fetch('http://localhost:3000/api/v1/articles', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
         'accept': 'application/json',
         'Authorization': localStorage.getItem('jwt')
-      }
+      },
+      body: JSON.stringify(cursor)
     })
     .then(resp => resp.json())
     .then(jsonObject => {
       this.setState({
-        articles: jsonObject.stories
+        articles: [...this.state.articles, ...jsonObject.stories],
+        nextPageCursor: jsonObject.next_page_cursor
       })
     })
   }
@@ -117,7 +124,7 @@ export default class AppConatiner extends Component {
 
   render() {
     return (
-      <div className='background'>
+      <div className='parallax'>
         <Grid celled='internally'>
           <Grid.Row>
             <Grid.Column width={4}>
@@ -130,6 +137,7 @@ export default class AppConatiner extends Component {
               <ArticlesContainer
                 articles={this.state.articles}
                 handleSaveArticle={this.handleSaveArticle}
+                fetchArticles={this.fetchArticles}
               />
             </Grid.Column>
             <Grid.Column width={4}>

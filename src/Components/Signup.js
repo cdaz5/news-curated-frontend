@@ -34,7 +34,7 @@ export default class SignUpForm extends Component {
 
   render () {
     return (
-      <div>
+      <div className='parallax height'>
         <Grid centered columns={3}>
           <Grid.Column verticalAlign='top'>
             <Form onSubmit={this.handleSubmit}>

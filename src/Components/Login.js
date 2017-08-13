@@ -17,14 +17,13 @@ export default class LoginForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    debugger
     this.props.onLogin(this.state)
     this.setState({email: '', password: ''})
   }
 
   render () {
     return (
-      <div className='loginPage'>
+      <div className='parallax height'>
         <Grid centered columns={3}>
           <Grid.Column verticalAlign='center'>
             <Form onSubmit={this.handleSubmit}>
