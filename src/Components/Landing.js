@@ -11,11 +11,13 @@ export default class Landing extends Component {
   render() {
     return (
       <div className='parallax height'>
-        <Button.Group size="massive">
-          <Link to="/signup"> <Button color="grey" size="massive"> Sign Up </Button> </Link>
-          <Button.Or />
-          <Link to="/login"> <Button positive color="grey" size="massive"> Login </Button> </Link>
-        </Button.Group>
+        <Segment textAlign='center' className='landingButtons'>
+          <Button.Group size="massive">
+            <Link to="/signup"> <Button color="grey" size="massive"> Sign Up </Button> </Link>
+            <Button.Or />
+            <Link to="/login"> <Button positive color="grey" size="massive"> Login </Button> </Link>
+          </Button.Group>
+        </Segment>
       </div>
     )
   }

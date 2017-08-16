@@ -53,13 +53,20 @@ export default class Article extends Component {
         <Item.Content>
           <Item.Header><Link to={this.props.article.links.permalink} target="_blank" className='articleLink'>{this.props.article.title}</Link></Item.Header>
           <Item.Meta>
-            <Label><Icon color='blue' name='facebook official'/>{this.renderFbShares()}</Label>
-            <Label><Icon color='blue' name='linkedin square'/>{this.renderLinkedinShares()}</Label>
-            <Label floated='right'><Icon floated='right' name='like' onClick={() => {this.props.handleSaveArticle(this.props.article)}} /></Label>
+            <div className='socialContainer'>
+              <div className='articleSocial'>
+                <Icon size='large' color='blue' name='facebook official'/>{this.renderFbShares()}
+              </div>
+              <div className='articleSocial'>
+                <Icon size='large' color='blue' name='linkedin square'/>{this.renderLinkedinShares()}
+              </div>
+              <div className='articleSocialHeart'>
+                <Icon size='large' floated='right' name='like' onClick={() => {this.props.handleSaveArticle(this.props.article)}} />
+              </div>
+          </div>
           </Item.Meta>
           <Item.Description>
-
-            <Accordion fluid styled className='accordion'>
+            <Accordion fluid className='accordion'>
               <Accordion.Title className='accordion'>
                 <Icon name='dropdown' />
                 Article Summary
@@ -74,7 +81,6 @@ export default class Article extends Component {
           <Item.Extra>
             <Label basic size='small' color='purple' pointing='right'>Sentiment</Label>
             {this.renderSentiment()}
-            <Icon name='like' onClick={() => {this.props.handleSaveArticle(this.props.article)}} />
           </Item.Extra>
         </Item.Content>
       </Item>

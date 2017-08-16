@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Image, Grid, Button } from 'semantic-ui-react';
+import { Card, Image, Grid, Button, Input } from 'semantic-ui-react';
 import Categories from '../CategoryData/Categories.js';
 import InterestCard from './InterestCard';
 import { TagCloud } from 'react-tagcloud';
@@ -8,10 +8,14 @@ import history from '../history';
 export default class InterestsForm extends Component {
   constructor(props) {
     super()
+    let count = 20
+    const allCategories = Categories.map((category) => {
+      return {value: category.label.toLowerCase(), count: count++}})
 
     this.state = {
       interests: [],
-      categories: Categories
+      categories: allCategories,
+      searchTerm: ''
     }
   }
 
@@ -22,8 +26,6 @@ export default class InterestsForm extends Component {
   }
 
   handleSubmit = (event, interests) => {
-
-    // debugger
     const stringInterests = this.state.interests.join(' OR ')
     const newInterests = {interests: stringInterests}
     debugger
@@ -37,37 +39,45 @@ export default class InterestsForm extends Component {
       body: JSON.stringify(newInterests)
     })
     history.push('/dashboard')
+  }
 
+  handleChange = (event) => {
+    this.setState({
+      searchTerm: event.target.value
+    })
   }
 
   render() {
-    let count = 20
-    const data = this.state.categories.map((category) => {
-      return {value: category.label, count: count++}})
-      const customRenderer = (tag, size, color) => (
-        <span key={tag.value}
-          style={{
-            animation: 'blinker 3s linear infinite',
-            animationDelay: `${Math.random() * 2}s`,
-            fontSize: `${size}em`,
-            border: `2px solid ${color}`,
-            margin: '3px',
-            padding: '3px',
-            display: 'inline-block',
-            color: 'white',
-          }}>{tag.value}</span>
-      );
+    const data = this.state.categories.filter((category) => {return category.value.includes(this.state.searchTerm.toLowerCase())})
+
+    const customRenderer = (tag, size, color) => (
+      <span key={tag.value}
+        style={{
+          animation: 'blinker 3s linear infinite',
+          animationDelay: `${Math.random() * 6}s`,
+          fontSize: `${size}em`,
+          // border: `2px solid ${color}`,
+          margin: '5px',
+          padding: '3px',
+          display: 'inline-block',
+          color: 'white',
+        }}>{tag.value}</span>
+      )
     return (
 
-      <div className='wordcloud'>
-        <div>
+      <div>
+        <div className='interestSearch'>
+        <span><Input inverted size='small' icon='search' placeholder='Search...' value={this.state.searchTerm} onChange={this.handleChange} /></span>
+        <span>&nbsp;&nbsp;</span>
+        <span><Button className='interestsButton' basic color="yellow" size="small" onClick={(event) => {this.handleSubmit(event, this.state.interests)}}>Take Me to the News!</Button></span>
+        </div>
+        <div className='wordcloud'>
           <TagCloud minSize={1}
                     maxSize={2}
                     tags={data}
                     onClick={tag => {this.handleClick(tag) }}
                     renderer={customRenderer}
           />
-          <Button color="grey" size="massive" onClick={(event) => {this.handleSubmit(event, this.state.interests)}}>Take Me to the News!</Button>
         </div>
       </div>
     )

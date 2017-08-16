@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Button, Form, Segment, Divider } from 'semantic-ui-react';
 import Interests from './Interests'
+import Step from './Step'
 
 // import LoginFB from './LoginFB'
 
@@ -37,6 +38,7 @@ export default class SignUpForm extends Component {
       <div className='parallax height'>
         <Grid centered columns={3}>
           <Grid.Column verticalAlign='top'>
+            <Step />
             <Form onSubmit={this.handleSubmit}>
               <Form.Field>
                 <input

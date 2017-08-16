@@ -90,7 +90,7 @@ class App extends Component {
           <Route exact path='/' render={() => this.state.auth.isLoggedIn ? <Redirect to='/dashboard'/> : <Landing/> } />
           <Route path='/interests' component={Authorize(Interests)}/>
           <Route path='/dashboard' component={Authorize(AppContainer)} />
-          <Route path='/signup' render={() => this.state.auth.isLoggedIn && this.state.auth.isFirstTime ? <Redirect to='/dashboard'/> : <Signup onSignup={this.onSignup}/>} />
+          <Route path='/signup' render={() => <Signup onSignup={this.onSignup}/>} />
           <Route path='/login' render={() => this.state.auth.isLoggedIn ? <Redirect to='/dashboard'/> : <Login onLogin={this.onLogin.bind(this)}/>} />
 
           <Route path='/logout' render={() => {

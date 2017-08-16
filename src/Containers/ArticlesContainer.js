@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Article from '../Components/Article'
-import { Item, Segment, Loader, Dimmer, Button } from 'semantic-ui-react'
+import { Item, Segment, Loader, Dimmer, Button, Icon } from 'semantic-ui-react'
 
 
 
@@ -23,7 +23,7 @@ renderLoader = () => {
       <div>
         <div className='newsfeed'>
           <Segment raised className='newsfeed'>
-            <Item.Header className='newsfeed'>NewsFeed</Item.Header>
+            <Item.Header className='newsfeed'>NewsFeed <Icon name='feed' color='orange'/></Item.Header>
           </Segment>
         </div>
         <Item.Group relaxed>

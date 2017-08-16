@@ -15,9 +15,12 @@ export default class Nav extends Component {
           <div className="navheader">News, Curated</div>
         </Menu.Item>
         <Menu.Item position="right">
+          <NavLink
+            to="/interests"
+            >Edit Interests |</NavLink>
         <NavLink
         to="/logout"
-        >Logout</NavLink>
+        >&nbsp;Logout</NavLink>
         </Menu.Item>
       </Menu>
     )
