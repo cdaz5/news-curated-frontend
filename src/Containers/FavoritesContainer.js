@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Segment, Feed, Item, Icon } from 'semantic-ui-react';
+import { Segment, Feed, Item, Icon, Dimmer, Loader } from 'semantic-ui-react';
 import SavedArticle from '../Components/SavedArticle';
-import PieOhMy from '../Components/PieChart';
 import Tweet from '../Components/Tweet';
 import SVGPieChart from '../Components/SVGPieChart'
 
@@ -41,9 +40,10 @@ export default class FavoritesContainer extends Component {
     if (this.props.tweets.length > 0)
       return this.props.tweets.map((tweet, idx) => (
         // debugger
-       <Tweet tweet={tweet} />
+       <Tweet tweet={tweet} tweetsActive={this.props.tweetsActive} />
      ))
   }
+
 
 
   render() {
@@ -62,13 +62,17 @@ export default class FavoritesContainer extends Component {
           <Item.Header className='newsfeed'>Article Sentiment <Icon name='thermometer three quarters' color='red' /></Item.Header>
         </Segment> : null}
         <div>
-        {this.renderPieChart()}
+          <Dimmer active={this.props.pieActive}>
+            <Loader className='trendsLoader' size='massive'>Fetching Saved Articles</Loader>
+          </Dimmer>
+          {this.renderPieChart()}
         </div>
-        {this.props.tweets.length > 0 ?
          <Segment raised className='newsfeed'>
           <Item.Header className='newsfeed'>Twitter Feed <Icon name='twitter' color='blue'/></Item.Header>
-        </Segment> : null}
+
+        </Segment>
         <Item.Group relaxed>
+          <Loader active={this.props.tweetsActive} inverted inline='centered' size='massive' content='Fetching Tweets'/>
           {this.renderTweets()}
         </Item.Group>
       </div>

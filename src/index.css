@@ -28,10 +28,15 @@ body {
 
 .tweetLink {
   color: black !important;
+  text-align: left !important;
 }
 
 .tweetLink:hover {
   color: rgb(102, 153, 246) !important;
+}
+
+.interestsBack {
+  height: 5000px !important;
 }
 
 .tweetArticles {
@@ -41,7 +46,7 @@ body {
 }
 
 .tweetPosted {
-  font-size: 100% !important;
+  font-size: 85% !important;
   text-align: left !important;
   display: inline-block !important;
   margin-left: 10px !important;
@@ -92,17 +97,99 @@ body {
 }
 
 .navheader {
-  font-family: 'Plaster', cursive;
+  font-family: 'Warnes', cursive;
   font-size: 35px;
   margin-bottom: 0px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center !important;
+  /*margin-left: 260%;*/
+  /*margin-right: auto;*/
   color: white !important;
   text-align: center;
-  text-shadow: -0px 0px 0.1em white, 0px 0px 0.2em white, 0px 0px 0.3em white,
-  0px 0px 0.4em rgb(102, 153, 246), 0px 0px 0.6em rgb(102, 153, 246), 0px 0px 0.8em rgb(102, 153, 246), 0px 0px 1.0em rgb(102, 153, 246), 0px 0px 1.2em rgb(102, 153, 246);
+  text-shadow: 0 0 10px #ffffff,
+             0 0 20px  #ffffff,
+             0 0 30px  #ffffff,
+             0 0 40px  #c603ac,
+             0 0 70px  #c603ac,
+             0 0 80px  #c603ac,
+             0 0 100px #c603ac,
+             0 0 150px #c603ac;
 
+    /*Animation*/
+  -webkit-animation: neonAnimation 1.5s ease-in-out infinite alternate;
+  -moz-animation: neonAnimation 1.5s ease-in-out infinite alternate;
+  animation: neonAnimation 1.5s ease-in-out infinite alternate;
+
+}
+/*Webkit prefix*/
+      @-webkit-keyframes neonAnimation {
+        from {
+          text-shadow: 0 0 10px #ffffff,
+                     0 0 20px  #ffffff,
+                     0 0 30px  #ffffff,
+                     0 0 40px  #c603ac,
+                     0 0 70px  #c603ac,
+                     0 0 80px  #c603ac,
+                     0 0 100px #c603ac,
+                     0 0 150px #c603ac;
+        }
+        to {
+          text-shadow: 0 0 10px #ffffff,
+                     0 0 20px  #ffffff,
+                     0 0 30px  #ffffff,
+                     0 0 40px  #c603ac,
+                     0 0 70px  #c603ac,
+                     0 0 80px  #c603ac,
+                     0 0 100px #c603ac,
+                     0 0 150px #c603ac;
+        }
+      }
+
+      /*Moz prefix*/
+      @-moz-keyframes neonAnimation {
+        from {
+          text-shadow: 0 0 10px #ffffff,
+                     0 0 20px  #ffffff,
+                     0 0 30px  #ffffff,
+                     0 0 40px  #c603ac,
+                     0 0 70px  #c603ac,
+                     0 0 80px  #c603ac,
+                     0 0 100px #c603ac,
+                     0 0 150px #c603ac;
+        }
+        to {
+          text-shadow: 0 0 10px #ffffff,
+                     0 0 20px  #ffffff,
+                     0 0 30px  #ffffff,
+                     0 0 40px  #c603ac,
+                     0 0 70px  #c603ac,
+                     0 0 80px  #c603ac,
+                     0 0 100px #c603ac,
+                     0 0 150px #c603ac;
+        }
+      }
+
+      /*No prefix*/
+      @keyframes neonAnimation {
+        from {
+          text-shadow: 0 0 10px #ffffff,
+                     0 0 20px  #ffffff,
+                     0 0 30px  #ffffff,
+                     0 0 40px  #c603ac,
+                     0 0 70px  #c603ac,
+                     0 0 80px  #c603ac,
+                     0 0 100px #c603ac,
+                     0 0 150px #c603ac;
+        }
+        to {
+          text-shadow: 0 0 10px #ffffff,
+                     0 0 20px  #ffffff,
+                     0 0 30px  #ffffff,
+                     0 0 40px  #c603ac,
+                     0 0 70px  #c603ac,
+                     0 0 80px  #c603ac,
+                     0 0 100px #c603ac,
+                     0 0 150px #c603ac;
+  }
 }
 
 @keyframes blinker {
@@ -110,7 +197,7 @@ body {
 }
 
 .wordcloud {
-  background-color: black !important;
+  /*background-color: black !important;*/
   text-align: center;
   font-size: xx-large;
   font-weight: bold;
@@ -118,11 +205,16 @@ body {
   height: 3000px;
 }
 
+.trendsLoader {
+  top: 10% !important;
+}
+
 .interestSearch {
-  background-color: black !important;
+  /*background-color: black !important;*/
   text-align: center;
   padding-bottom: 10px;
 }
+
 
 .header {
   font-family: 'Plaster';
@@ -134,7 +226,7 @@ body {
 }
 
 .likesRetweets {
-  font-size: medium                                                                                                                                            !important;
+  font-size: medium !important;
   color: white !important;
 }
 
@@ -148,14 +240,8 @@ body {
 }
 
 .parallax {
-    /* The image used */
     background-image: url("https://ak9.picdn.net/shutterstock/videos/2729330/thumb/1.jpg");
-
-/*https://previews.123rf.com/images/roystudio/roystudio1205/roystudio120500010/13694677-white-brick-wall-background-or-texture-Stock-Photo.jpg*/
-    /* Full height */
     height: 100%;
-
-    /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;

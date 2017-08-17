@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import LoginFB from './LoginFB'
-import { Grid, Button, Checkbox, Form, Segment, Divider } from 'semantic-ui-react';
+import { Grid, Button, Checkbox, Form, Segment, Divider, Message } from 'semantic-ui-react';
 
 export default class LoginForm extends Component {
 
@@ -21,11 +21,25 @@ export default class LoginForm extends Component {
     this.setState({email: '', password: ''})
   }
 
+  renderErrorMessage = () => {
+     if (!!this.props.errors && this.props.errors.length > 0) {
+      return (<Message
+        color='red'
+        className='loginSignupMessage'
+        header={this.props.errors}
+        content='Please try again'
+      />)
+    } else {
+      return null
+    }
+  }
+
   render () {
     return (
       <div className='parallax height'>
         <Grid centered columns={3}>
           <Grid.Column verticalAlign='center'>
+            {this.renderErrorMessage()}
             <Form onSubmit={this.handleSubmit}>
               <Form.Field>
                 <input

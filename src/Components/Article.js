@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Loader, Accordion, Button, Icon, Image as ImageComponent, Item, Label, Card } from 'semantic-ui-react'
+import { Popup, Loader, Accordion, Button, Icon, Image as ImageComponent, Item, Label, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 
@@ -7,7 +7,7 @@ export default class Article extends Component {
 
 
   renderPic = () => {
-    return (!!this.props.article.media[0] ?
+    return (this.props.article.media.length > 0 ?
     this.props.article.media[0].url :
     'https://vignette2.wikia.nocookie.net/inkagames-english/images/0/0e/No_image.jpg/revision/latest?cb=20170113194025'
     )
@@ -55,13 +55,28 @@ export default class Article extends Component {
           <Item.Meta>
             <div className='socialContainer'>
               <div className='articleSocial'>
-                <Icon size='large' color='blue' name='facebook official'/>{this.renderFbShares()}
+                <Popup
+                  inverted
+                  trigger={<span><Icon size='large' color='blue' name='facebook official'/>{this.renderFbShares()}</span>}
+                  content='Number of Shares on Facebook'
+                  position='top center'
+                />
               </div>
               <div className='articleSocial'>
-                <Icon size='large' color='blue' name='linkedin square'/>{this.renderLinkedinShares()}
+                <Popup
+                  inverted
+                  trigger={<span><Icon size='large' color='blue' name='linkedin square'/>{this.renderLinkedinShares()}</span>}
+                  content='Number of Shares on LinkedIn'
+                  position='top center'
+                />
               </div>
               <div className='articleSocialHeart'>
-                <Icon size='large' floated='right' name='like' onClick={() => {this.props.handleSaveArticle(this.props.article)}} />
+                <Popup
+                  inverted
+                  trigger={<Icon size='large' floated='right' name='like' onClick={() => {this.props.handleSaveArticle(this.props.article)}} />}
+                  content='Click to Save for Later!'
+                  position='right center'
+                 />
               </div>
           </div>
           </Item.Meta>

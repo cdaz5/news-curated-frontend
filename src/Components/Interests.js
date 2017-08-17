@@ -10,7 +10,7 @@ export default class InterestsForm extends Component {
     super()
     let count = 20
     const allCategories = Categories.map((category) => {
-      return {value: category.label.toLowerCase(), count: count++}})
+      return {value: category.label.toLowerCase(), count: count++, color: 'white'}})
 
     this.state = {
       interests: [],
@@ -20,6 +20,7 @@ export default class InterestsForm extends Component {
   }
 
   handleClick = (tag) => {
+    tag.color = 'red'
     this.setState({
       interests: [...this.state.interests, tag.value]
     })
@@ -60,12 +61,13 @@ export default class InterestsForm extends Component {
           margin: '5px',
           padding: '3px',
           display: 'inline-block',
-          color: 'white',
+          color: tag.color,
         }}>{tag.value}</span>
       )
     return (
 
-      <div>
+      <div className='parallax'>
+        <div className='interestsBack'>
         <div className='interestSearch'>
         <span><Input inverted size='small' icon='search' placeholder='Search...' value={this.state.searchTerm} onChange={this.handleChange} /></span>
         <span>&nbsp;&nbsp;</span>
@@ -79,6 +81,7 @@ export default class InterestsForm extends Component {
                     renderer={customRenderer}
           />
         </div>
+      </div>
       </div>
     )
   }

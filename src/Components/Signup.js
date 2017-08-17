@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { Grid, Button, Form, Segment, Divider } from 'semantic-ui-react';
+import { Grid, Button, Form, Segment, Divider, Message } from 'semantic-ui-react';
 import Interests from './Interests'
 import Step from './Step'
 
 // import LoginFB from './LoginFB'
 
-export default class SignUpForm extends Component {
+export default class SignUp extends Component {
 
   state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
     }
 
   handleChange = (event) => {
@@ -20,17 +20,30 @@ export default class SignUpForm extends Component {
   }
 
   handleSubmit = (event) => {
-    console.log("handle submit on signup component")
+    // console.log("handle submit on signup component")
     event.preventDefault()
     // this.context.history.push('/interests')
     // debugger
     this.props.onSignup(this.state)
-    console.log(this.state)
+    // console.log(this.state)
     this.setState({
       name: '',
       email: '',
       password: ''
     })
+  }
+
+  renderErrorMessage = () => {
+     if (!!this.props.errors && this.props.errors.length > 0) {
+      return (<Message
+        color='red'
+        className='loginSignupMessage'
+        header={this.props.errors}
+        content='Please try again'
+      />)
+    } else {
+      return null
+    }
   }
 
   render () {
@@ -39,6 +52,7 @@ export default class SignUpForm extends Component {
         <Grid centered columns={3}>
           <Grid.Column verticalAlign='top'>
             <Step />
+            {this.renderErrorMessage()}
             <Form onSubmit={this.handleSubmit}>
               <Form.Field>
                 <input

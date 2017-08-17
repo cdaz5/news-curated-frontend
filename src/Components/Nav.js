@@ -11,7 +11,7 @@ export default class Nav extends Component {
         <Menu.Item>
           <iframe src="https://giphy.com/embed/zfBfXWozB2WKk" width='50' height='50' frameBorder='0' ></iframe>
         </Menu.Item>
-        <Menu.Item header className="navheader" position='right'>
+        <Menu.Item header className="navheader">
           <div className="navheader">News, Curated</div>
         </Menu.Item>
         <Menu.Item position="right">

@@ -19,6 +19,7 @@ class App extends Component {
       isLoggedIn: false,
       isFirstTime: false,
       user: '',
+      errors: []
     },
     submittedInterests: false,
   }
@@ -31,15 +32,22 @@ class App extends Component {
 
   onLogin = (loginParams) => {
     // debugger
-    AuthAdapter.login(loginParams).then(res => {
+    AuthAdapter.login(loginParams)
+    .then(res => {
+      console.log(res)
       if (res.error) {
-        console.log(res.error)
+        this.setState({
+          auth: {
+            errors: ['User Email Already Exists']
+          }
+        })
       } else {
         localStorage.setItem('jwt', res.jwt)
         this.setState({
           auth: {
             isLoggedIn: true,
             user: res.email,
+            errors: []
           }
         })
       }
@@ -51,16 +59,21 @@ class App extends Component {
     // debugger
     console.log('in signup in app compnenet')
     AuthAdapter.signUp(signUpParams)
-    .then( res => {
-      if ( res.error ){
-        console.log(res.error)
-      }else{
+    .then(res => {
+      if (res.error) {
+        this.setState({
+          auth: {
+            errors: res.error
+          }
+        })
+      } else {
         localStorage.setItem('jwt', res.jwt)
         this.setState({
           auth: {
             isLoggedIn: true,
             user: res.email,
-            isFirstTime: true
+            isFirstTime: true,
+            errors: []
           }
         })
         console.log('after auth fetch')
@@ -90,8 +103,8 @@ class App extends Component {
           <Route exact path='/' render={() => this.state.auth.isLoggedIn ? <Redirect to='/dashboard'/> : <Landing/> } />
           <Route path='/interests' component={Authorize(Interests)}/>
           <Route path='/dashboard' component={Authorize(AppContainer)} />
-          <Route path='/signup' render={() => <Signup onSignup={this.onSignup}/>} />
-          <Route path='/login' render={() => this.state.auth.isLoggedIn ? <Redirect to='/dashboard'/> : <Login onLogin={this.onLogin.bind(this)}/>} />
+          <Route path='/signup' render={() => <Signup onSignup={this.onSignup} errors={this.state.auth.errors}/>} />
+          <Route path='/login' render={() => this.state.auth.isLoggedIn ? <Redirect to='/dashboard'/> : <Login onLogin={this.onLogin.bind(this)} errors={this.state.auth.errors}/>} />
 
           <Route path='/logout' render={() => {
             this.onLogout()

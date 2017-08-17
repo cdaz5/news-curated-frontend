@@ -11,11 +11,12 @@ const SVGPieChart = ({data}) => {
     <div>
       <PieChart
         data={data}
-        lineWidth={15}
+        lineWidth={25}
         rounded={true}
         animate={true}
         animationDuration={1000}
         animationEasing='ease-out'
+        radius={35}
       />
       <div className='pieLabelContainer'>
       {data.map((label) => (

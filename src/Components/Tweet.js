@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feed, Icon, Item } from 'semantic-ui-react';
+import { Feed, Icon, Item, Loader, Dimmer } from 'semantic-ui-react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 

@@ -6,9 +6,6 @@ import { Item, Segment, Loader, Dimmer, Button, Icon } from 'semantic-ui-react'
 
 export default class ArticlesContainer extends Component {
 
-renderLoader = () => {
-  this.props.articles[0] ? null : <Loader active inverted inline='centered' size='massive' content='Fetching News'/>
-}
 
 
   render() {
@@ -26,8 +23,10 @@ renderLoader = () => {
             <Item.Header className='newsfeed'>NewsFeed <Icon name='feed' color='orange'/></Item.Header>
           </Segment>
         </div>
+        <Dimmer active={this.props.active}>
+          <Loader className='trendsLoader' size='massive'>Fetching News</Loader>
+        </Dimmer>
         <Item.Group relaxed>
-          {this.renderLoader}
           {articles}
         </Item.Group>
         <Segment className='moreArticles' textAlign='center'>

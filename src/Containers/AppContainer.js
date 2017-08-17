@@ -17,7 +17,11 @@ export default class AppConatiner extends Component {
     nextPageCursor: '',
     trends: [],
     sentiment: [],
-    tweets: []
+    tweets: [],
+    tweetsLoader: true,
+    trendsLoader: true,
+    articlesLoader: true,
+    pieLoader: true
   }
 
   deleteSavedArticle = (deleteArticle) => {
@@ -45,9 +49,10 @@ export default class AppConatiner extends Component {
     )
   }
 
+
   fetchArticles = () => {
+    this.setState({ articlesLoader: true, trendsLoader: true, tweetsLoader: true, pieLoader:true})
     const cursor = {nextPageCursor: this.state.nextPageCursor}
-    // debugger
     fetch('http://localhost:3000/api/v1/articles', {
       method: 'POST',
       headers: {
@@ -59,9 +64,21 @@ export default class AppConatiner extends Component {
     })
     .then(resp => resp.json())
     .then(jsonObject => {
+
+      const cleanArticles = jsonObject.stories.filter((obj, pos, arr) => {
+          return arr.map(mapObj =>  {
+            // debugger
+            if (mapObj['media'].includes('url')) {
+              return mapObj['media'][0]['url'].indexOf(obj['media'][0]['url']) === pos
+            } else {
+              return mapObj
+            }
+      })});
+      // debugger
       this.setState({
-        articles: [...this.state.articles, ...jsonObject.stories],
-        nextPageCursor: jsonObject.next_page_cursor
+        articles: [...this.state.articles, ...cleanArticles],
+        nextPageCursor: jsonObject.next_page_cursor,
+        articlesLoader: !this.state.articlesLoader
       })
       return jsonObject
     }).then(jsonObject => {
@@ -80,13 +97,14 @@ export default class AppConatiner extends Component {
       .then(resp => resp.json())
       .then(jsonObject => {
         this.setState({
-          trends: [...jsonObject.trends]
+          trends: [...jsonObject.trends],
+          trendsLoader: !this.state.trendsLoader
         })
         return jsonObject
       })
-      .then(jsonObject => {
-          return this.fetchTweets()
-        })
+      // .then(jsonObject => {
+      //     return this.fetchTweets()
+      //   })
         .then(jsonObject => {
           if (!!this.state.savedArticles[0]) {
             const articleIds = this.state.savedArticles.map(article => {return  {id: article.aylien_id}})
@@ -105,11 +123,14 @@ export default class AppConatiner extends Component {
             .then(resp => resp.json())
             .then(jsonObject => {
               this.setState({
-                sentiment: jsonObject.trends
+                sentiment: jsonObject.trends,
+                pieLoader: !this.state.pieLoader
               })
             })
           } else {
-            null
+            this.setState({
+              pieLoader: !this.state.pieLoader
+            })
           }
         })
       })
@@ -177,7 +198,8 @@ export default class AppConatiner extends Component {
     .then(jsonObject => {
       // debugger
       this.setState({
-        tweets: jsonObject
+        tweets: jsonObject,
+        tweetsLoader: !this.state.tweetsLoader
       })
       return jsonObject
     })
@@ -280,6 +302,7 @@ export default class AppConatiner extends Component {
 
 
 
+
   render() {
     return (
       <div className='parallax'>
@@ -291,6 +314,8 @@ export default class AppConatiner extends Component {
                 deleteSavedArticle={this.deleteSavedArticle}
                 sentiment={this.state.sentiment}
                 tweets={this.state.tweets}
+                tweetsActive={this.state.tweetsLoader}
+                pieActive={this.state.pieLoader}
               />
             </Grid.Column>
             <Grid.Column width={8}>
@@ -298,10 +323,15 @@ export default class AppConatiner extends Component {
                 articles={this.state.articles}
                 handleSaveArticle={this.handleSaveArticle}
                 fetchArticles={this.fetchArticles}
+                active={this.state.articlesLoader}
               />
             </Grid.Column>
             <Grid.Column width={4}>
-              <TrendsContainer trends={this.state.trends} sentiment={this.state.sentiment}/>
+              <TrendsContainer
+                trends={this.state.trends}
+                trendsActive={this.state.trendsLoader}
+                sentiment={this.state.sentiment}
+              />
             </Grid.Column>
           </Grid.Row>
         </Grid>
