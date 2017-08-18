@@ -30,7 +30,6 @@ export default class InterestsForm extends Component {
   handleSubmit = (event, interests) => {
     const stringInterests = this.state.interests.join(' OR ')
     const newInterests = {interests: stringInterests}
-    debugger
     fetch(`${BASE_URL}/users/edit`, {
       method: 'POST',
       headers: {
@@ -49,6 +48,12 @@ export default class InterestsForm extends Component {
     })
   }
 
+  renderButton = () => {
+    if (this.state.interests.length > 2) {
+      return (<span><Button className='interestsButton' basic color="yellow" size="small" onClick={(event) => {this.handleSubmit(event, this.state.interests)}}>Take Me to the News!</Button></span>)
+    }
+  }
+
   render() {
     const data = this.state.categories.filter((category) => {return category.value.includes(this.state.searchTerm.toLowerCase())})
 
@@ -59,7 +64,7 @@ export default class InterestsForm extends Component {
           animationDelay: `${Math.random() * 6}s`,
           fontSize: `${size}em`,
           // border: `2px solid ${color}`,
-          margin: '6px',
+          margin: '4px',
           padding: '4px',
           display: 'inline-block',
           color: tag.color,
@@ -69,20 +74,30 @@ export default class InterestsForm extends Component {
 
       <div className='parallax'>
         <div className='interestsBack'>
-        <div className='interestSearch'>
-        <span><Input inverted size='small' icon='search' placeholder='Search...' value={this.state.searchTerm} onChange={this.handleChange} /></span>
-        <span>&nbsp;&nbsp;</span>
-        <span><Button className='interestsButton' basic color="yellow" size="small" onClick={(event) => {this.handleSubmit(event, this.state.interests)}}>Take Me to the News!</Button></span>
+          <div className='interestSearch'>
+            <div className='neon login'>
+              choose at least 3 interests
+            </div>
+            <div>
+              <span>
+                <Input inverted size='small' icon='search' placeholder='Search...' value={this.state.searchTerm} onChange={this.handleChange} />
+              </span>
+              <span>
+                &nbsp;&nbsp;
+              </span>
+              {this.renderButton()}
+            </div>
+          </div>
+          <div className='wordcloud'>
+            <TagCloud
+              minSize={1}
+              maxSize={2}
+              tags={data}
+              onClick={tag => {this.handleClick(tag) }}
+              renderer={customRenderer}
+            />
+          </div>
         </div>
-        <div className='wordcloud'>
-          <TagCloud minSize={1}
-                    maxSize={2}
-                    tags={data}
-                    onClick={tag => {this.handleClick(tag) }}
-                    renderer={customRenderer}
-          />
-        </div>
-      </div>
       </div>
     )
   }

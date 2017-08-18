@@ -13,7 +13,7 @@ const wordCloud = ({open, tag, handleClose, minSize, maxSize, data, handleClick,
           {tag.value} is mentioned {tag.count} times.
         </Modal.Content>
         <Modal.Actions>
-            <Icon name='checkmark' color='green' onClick={() => {handleClose()}}/>
+            <Icon size='massive' name='checkmark' color='green' onClick={() => {handleClose()}}/>
         </Modal.Actions>
       </Modal>
       <TagCloud minSize={minSize}

@@ -100,9 +100,9 @@ export default class AppConatiner extends Component {
         })
         return jsonObject
       })
-      .then(jsonObject => {
-          return this.fetchTweets()
-        })
+      // .then(jsonObject => {
+      //     return this.fetchTweets()
+      //   })
         .then(jsonObject => {
           if (!!this.state.savedArticles[0]) {
             const articleIds = this.state.savedArticles.map(article => {return  {id: article.aylien_id}})
@@ -183,6 +183,7 @@ export default class AppConatiner extends Component {
       hashtags: this.state.articles.map((article) => {return article.hashtags[0]}).join(' OR ')
       }
     // debugger
+    console.log('fetching tweets')
     fetch(`${BASE_URL}/tweets`, {
       method: 'POST',
       headers: {
@@ -262,8 +263,8 @@ export default class AppConatiner extends Component {
       author: article.author.name,
       keywords: article.keywords.join(', '),
       hashtags: article.hashtags.join(', '),
-      facebook_shares: article.social_shares_count.facebook[0].count,
-      linkedin_shares: article.social_shares_count.linkedin[0].count,
+      facebook_shares: !!article.social_shares_count.facebook[0] ? article.social_shares_count.facebook[0].count : 0,
+      linkedin_shares: !!article.social_shares_count.linkedin[0] ? article.social_shares_count.linkedin[0].count : 0,
       related_stories_api_call: article.links.related_stories,
       sentiment_polarity: article.sentiment.body.polarity,
       sentiment_score: article.sentiment.body.score,

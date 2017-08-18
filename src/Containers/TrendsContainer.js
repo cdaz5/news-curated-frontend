@@ -35,7 +35,7 @@ export default class TrendsContainer extends Component {
     <span key={tag.value}
       style={{
         animation: 'blinker 3s linear infinite',
-        animationDelay: `${Math.random() * 5}s`,
+        animationDelay: `${Math.random() * 8}s`,
         fontSize: `${size}em`,
         border: `2px solid ${color}`,
         margin: '6px',
