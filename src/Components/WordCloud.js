@@ -5,7 +5,7 @@ import { Modal, Icon }  from 'semantic-ui-react';
 const wordCloud = ({open, tag, handleClose, minSize, maxSize, data, handleClick, customRenderer}) => {
   return (
     <div>
-      <Modal basic open={open} size='small'>
+      <Modal basic open={open} size='small' onClick={() => {handleClose()}}>
         <Modal.Header className='modalHeader'>
           {tag.value}
         </Modal.Header>
