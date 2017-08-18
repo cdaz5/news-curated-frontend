@@ -5,7 +5,7 @@ import FavoritesContainer from './FavoritesContainer';
 import TrendsContainer from './TrendsContainer';
 
 
-const baseUrl = process.env.REACT_API
+const BASE_URL = process.env.REACT_API
 
 export default class AppConatiner extends Component {
 
@@ -25,7 +25,7 @@ export default class AppConatiner extends Component {
   deleteSavedArticle = (deleteArticle) => {
     const articleId = {id: deleteArticle.id}
     // debugge
-    fetch(`${baseUrl}/delete/saved_article`, {
+    fetch(`${BASE_URL}/delete/saved_article`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
@@ -51,7 +51,7 @@ export default class AppConatiner extends Component {
   fetchArticles = () => {
     this.setState({ articlesLoader: true, trendsLoader: true, tweetsLoader: true, pieLoader:true})
     const cursor = {nextPageCursor: this.state.nextPageCursor}
-    fetch(`${baseUrl}/articles`, {
+    fetch(`${BASE_URL}/articles`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -83,7 +83,7 @@ export default class AppConatiner extends Component {
       const articleIds = this.state.articles.map(article => {return {id: article.id}})
       // debugger
       const arrayOfIds = {articles: articleIds}
-      fetch(`${baseUrl}/trends`, {
+      fetch(`${BASE_URL}/trends`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -109,7 +109,7 @@ export default class AppConatiner extends Component {
             // debugger
             const arrayOfIds = {articles: articleIds}
             // debugger
-            fetch(`${baseUrl}/sentiment`, {
+            fetch(`${BASE_URL}/sentiment`, {
               method: 'POST',
               headers: {
                 'content-type': 'application/json',
@@ -144,7 +144,7 @@ export default class AppConatiner extends Component {
       // debugger
       const arrayOfIds = {articles: articleIds}
       // debugger
-      fetch(`${baseUrl}/sentiment`, {
+      fetch(`${BASE_URL}/sentiment`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -161,7 +161,7 @@ export default class AppConatiner extends Component {
       })
     }
   // fetchTrends = () => {
-  //   fetch(`${baseUrl}/trends`, {
+  //   fetch(`${BASE_URL}/trends`, {
   //     method: 'GET',
   //     headers: {
   //       'content-type': 'application/json',
@@ -183,7 +183,7 @@ export default class AppConatiner extends Component {
       hashtags: this.state.articles.map((article) => {return article.hashtags[0]}).join(' OR ')
       }
     // debugger
-    fetch(`${baseUrl}/tweets`, {
+    fetch(`${BASE_URL}/tweets`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -225,7 +225,7 @@ export default class AppConatiner extends Component {
   // }
 
   fetchSavedArticles = () => {
-    fetch(`${baseUrl}/user/articles`, {
+    fetch(`${BASE_URL}/user/articles`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -273,7 +273,7 @@ export default class AppConatiner extends Component {
   }
 
   saveArticle = (article) => {
-    fetch(`${baseUrl}/saved_articles`, {
+    fetch(`${BASE_URL}/saved_articles`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
