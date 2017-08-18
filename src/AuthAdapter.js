@@ -1,4 +1,5 @@
-const BASE_URL = process.env.REACT_API
+
+const BASE_URL = process.env.REACT_APP_API
 
 export default class AuthAdapter {
   static login (loginParams) {
