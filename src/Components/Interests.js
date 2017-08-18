@@ -29,7 +29,7 @@ export default class InterestsForm extends Component {
     const stringInterests = this.state.interests.join(' OR ')
     const newInterests = {interests: stringInterests}
     debugger
-    fetch('http://localhost:3000/api/v1/users/edit', {
+    fetch(process.env.REACT_API + '/users/edit', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

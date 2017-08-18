@@ -25,7 +25,7 @@ export default class AppConatiner extends Component {
   deleteSavedArticle = (deleteArticle) => {
     const articleId = {id: deleteArticle.id}
     // debugge
-    fetch('http://localhost:3000/api/v1/delete/saved_article', {
+    fetch(process.env.REACT_API + '/delete/saved_article', {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
@@ -51,7 +51,7 @@ export default class AppConatiner extends Component {
   fetchArticles = () => {
     this.setState({ articlesLoader: true, trendsLoader: true, tweetsLoader: true, pieLoader:true})
     const cursor = {nextPageCursor: this.state.nextPageCursor}
-    fetch('http://localhost:3000/api/v1/articles', {
+    fetch(process.env.REACT_API + '/articles', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -83,7 +83,7 @@ export default class AppConatiner extends Component {
       const articleIds = this.state.articles.map(article => {return {id: article.id}})
       // debugger
       const arrayOfIds = {articles: articleIds}
-      fetch('http://localhost:3000/api/v1/trends', {
+      fetch(process.env.REACT_API + '/trends', {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -109,7 +109,7 @@ export default class AppConatiner extends Component {
             // debugger
             const arrayOfIds = {articles: articleIds}
             // debugger
-            fetch('http://localhost:3000/api/v1/sentiment', {
+            fetch(process.env.REACT_API + '/sentiment', {
               method: 'POST',
               headers: {
                 'content-type': 'application/json',
@@ -144,7 +144,7 @@ export default class AppConatiner extends Component {
       // debugger
       const arrayOfIds = {articles: articleIds}
       // debugger
-      fetch('http://localhost:3000/api/v1/sentiment', {
+      fetch(process.env.REACT_API + '/sentiment', {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -161,7 +161,7 @@ export default class AppConatiner extends Component {
       })
     }
   // fetchTrends = () => {
-  //   fetch('http://localhost:3000/api/v1/trends', {
+  //   fetch(process.env.REACT_API + '/trends', {
   //     method: 'GET',
   //     headers: {
   //       'content-type': 'application/json',
@@ -183,7 +183,7 @@ export default class AppConatiner extends Component {
       hashtags: this.state.articles.map((article) => {return article.hashtags[0]}).join(' OR ')
       }
     // debugger
-    fetch('http://localhost:3000/api/v1/tweets', {
+    fetch(process.env.REACT_API + '/tweets', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -225,7 +225,7 @@ export default class AppConatiner extends Component {
   // }
 
   fetchSavedArticles = () => {
-    fetch('http://localhost:3000/api/v1/user/articles', {
+    fetch(process.env.REACT_API + '/user/articles', {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -273,7 +273,7 @@ export default class AppConatiner extends Component {
   }
 
   saveArticle = (article) => {
-    fetch('http://localhost:3000/api/v1/saved_articles', {
+    fetch(process.env.REACT_API + '/saved_articles', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

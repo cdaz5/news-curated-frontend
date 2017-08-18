@@ -1,8 +1,8 @@
-const baseUrl = 'http://localhost:3000/api/v1'
+const baseUrl = process.env.REACT_API
 
 export default class AuthAdapter {
   static login (loginParams) {
-    return fetch('http://localhost:3000/api/v1/login', {
+    return fetch(process.env.REACT_API + '/login', {
       method: 'POST',
       headers: headers(),
       body: JSON.stringify(loginParams)
@@ -10,7 +10,7 @@ export default class AuthAdapter {
   }
 
   static signUp (signUpParams) {
-    return fetch('http://localhost:3000/api/v1/signup', {
+    return fetch(`${process.env.REACT_API}/signup`, {
       method: 'POST',
       headers: headers(),
       body: JSON.stringify(signUpParams)
