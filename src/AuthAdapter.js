@@ -6,7 +6,7 @@ export default class AuthAdapter {
       method: 'POST',
       headers: headers(),
       body: JSON.stringify(loginParams)
-    }).then(res => res.json())
+    }).then(resp => resp.json())
   }
 
   static signUp (signUpParams) {
@@ -14,13 +14,13 @@ export default class AuthAdapter {
       method: 'POST',
       headers: headers(),
       body: JSON.stringify(signUpParams)
-    }).then(res => res.json())
+    }).then(resp => resp.json())
   }
 
   static currentUser () {
     return fetch(`${baseUrl}/me`, {
       headers: headers()
-    }).then(res => res.json())
+    }).then(resp => resp.json())
   }
 }
 

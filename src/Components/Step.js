@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Step, Statistic } from 'semantic-ui-react'
+import { Icon, Step } from 'semantic-ui-react'
 
 const step = () => (
   <Step.Group className='steps' size='mini'>

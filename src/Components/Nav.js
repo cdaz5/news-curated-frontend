@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Menu, Image } from 'semantic-ui-react'
+import { Menu, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
-import logo from '../Images/logo.png'
 
 export default class Nav extends Component {
 
@@ -9,18 +8,19 @@ export default class Nav extends Component {
     return (
       <Menu stackable borderless inverted className='nav'>
         <Menu.Item>
-          <iframe src="https://giphy.com/embed/zfBfXWozB2WKk" width='50' height='50' frameBorder='0' ></iframe>
-        </Menu.Item>
-        <Menu.Item header className="navheader">
-          <div className="navheader">News, Curated</div>
+          <div className="navheader neon">News, Curated</div>
         </Menu.Item>
         <Menu.Item position="right">
           <NavLink
+            className='navLink'
             to="/interests"
-            >Edit Interests |</NavLink>
+            >Edit Interests |
+          </NavLink>
         <NavLink
-        to="/logout"
-        >&nbsp;Logout</NavLink>
+          className='navLink'
+          to="/logout"
+          >&nbsp;Logout
+        </NavLink>
         </Menu.Item>
       </Menu>
     )

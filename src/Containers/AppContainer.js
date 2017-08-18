@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Grid, Image } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import ArticlesContainer from './ArticlesContainer';
 import FavoritesContainer from './FavoritesContainer';
-import Weather from '../Components/WeatherWidget';
-import { OpenWeatherMap } from 'react-weather';
 import TrendsContainer from './TrendsContainer';
 
 
@@ -102,9 +100,9 @@ export default class AppConatiner extends Component {
         })
         return jsonObject
       })
-      // .then(jsonObject => {
-      //     return this.fetchTweets()
-      //   })
+      .then(jsonObject => {
+          return this.fetchTweets()
+        })
         .then(jsonObject => {
           if (!!this.state.savedArticles[0]) {
             const articleIds = this.state.savedArticles.map(article => {return  {id: article.aylien_id}})
@@ -299,10 +297,6 @@ export default class AppConatiner extends Component {
     this.saveArticle(newArticle)
   }
 
-
-
-
-
   render() {
     return (
       <div className='parallax'>
@@ -336,6 +330,6 @@ export default class AppConatiner extends Component {
           </Grid.Row>
         </Grid>
       </div>
-   )
+    )
   }
- }
+}

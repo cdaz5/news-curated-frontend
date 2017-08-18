@@ -7,7 +7,6 @@ import Landing from './Components/Landing';
 import Authorize from './Authorize';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
-import PropTypes from 'prop-types';
 import Interests from './Components/Interests'
 import history from './history'
 
@@ -31,22 +30,27 @@ class App extends Component {
   }
 
   onLogin = (loginParams) => {
+    this.setState({
+      auth: {
+        errors: []
+      }
+    })
     // debugger
     AuthAdapter.login(loginParams)
-    .then(res => {
-      console.log(res)
-      if (res.error) {
+    .then(resp => {
+      console.log(resp)
+      if (resp.error) {
         this.setState({
           auth: {
-            errors: ['User Email Already Exists']
+            errors: [...resp.error]
           }
         })
       } else {
-        localStorage.setItem('jwt', res.jwt)
+        localStorage.setItem('jwt', resp.jwt)
         this.setState({
           auth: {
             isLoggedIn: true,
-            user: res.email,
+            user: resp.email,
             errors: []
           }
         })
@@ -56,22 +60,27 @@ class App extends Component {
 
 
   onSignup = (signUpParams) => {
+    // this.setState({
+    //   auth: {
+    //     errors: []
+    //   }
+    // })
     // debugger
     console.log('in signup in app compnenet')
     AuthAdapter.signUp(signUpParams)
-    .then(res => {
-      if (res.error) {
+    .then(resp => {
+      if (resp.error) {
         this.setState({
           auth: {
-            errors: res.error
+            errors: [...resp.error]
           }
         })
       } else {
-        localStorage.setItem('jwt', res.jwt)
+        localStorage.setItem('jwt', resp.jwt)
         this.setState({
           auth: {
             isLoggedIn: true,
-            user: res.email,
+            user: resp.email,
             isFirstTime: true,
             errors: []
           }
@@ -117,14 +126,4 @@ class App extends Component {
   }
 }
 
-{/* <Route path='/signup' render={() => {
-  if (props.isFirstTime) {
-    return <Redirect to='/interests'/>
-  } else if (props.isLoggedIn) {
-    return <Redirect to='/dashboard'/>
-  } else {
-    return <Redirect to='/signup'/>
-  }
-}} /> */}
-{/* <RouterContainer {...this.state.auth} submittedInterests={this.state.submittedInterests} onLogin={this.onLogin} onLogout={this.onLogout} onSignup={this.onSignup} /> */}
 export default App;

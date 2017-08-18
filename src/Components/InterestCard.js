@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Image, Label, Segment, Grid } from 'semantic-ui-react';
+import { Label, Grid } from 'semantic-ui-react';
 
 export default class InterestCard extends Component {
 
@@ -27,19 +27,8 @@ export default class InterestCard extends Component {
   render() {
     return (
       <Grid.Column>
-
-
           <Label  color='orange' >{this.props.category}</Label>
-
     </Grid.Column>
     )
   }
 }
-
-
-{/* <Image src={this.state.image} /> */}
-{/* <Image size='large' src={this.state.image} />
-<Card.Header>
-  {this.props.category}
-</Card.Header>
-</Card> */}

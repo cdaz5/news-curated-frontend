@@ -3,23 +3,65 @@ body {
   padding: 0;
   font-family: sans-serif;
   height: 1000px;
+  background-color: black !important;
+  line-height: normal !important;
+}
+
+.header {
+  font-family: 'Roboto Slab', serif;
+  font-size: 200% !important;
+  margin-bottom: 0px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold !important;
 }
 
 .newsfeed {
+  /*font-family: 'Pacifico', cursive !important;*/
   text-align: center;
-  font-size: xx-large;
-  font-weight: bold;
-  font-style: italic;
+  vertical-align: middle !important;
+  /*line-height: 0px !important;*/
+  /*font-size: xx-large !important;*/
+  /*font-weight: bold;
+  font-style: italic;*/
+  border-radius: 2em !important;
   position: -webkit-sticky !important;
   position: sticky !important;
   top: 20px;
-  background-color: rgb(20, 27, 53) !important;
+  border: 3px solid !important;
+  background-color: black !important;
   color: white;
   z-index: 999 !important;
 }
 
+.newsfeedDiv {
+  border: 0px !important;
+}
+
+/*background-image:
+linear-gradient(
+  to right,
+  yellow,
+  orange,
+  rgb(250, 25, 127)
+) !important;
+}*/
+
+/*rgba(255, 196, 0),
+
+rgb(250, 25, 127	*/
+
+.newspaper {
+  color: white !important;
+}
+
+.cloud {
+  color: blue !important;
+}
+
 .twitterFeed {
-  color: black !important;
+  color: white !important;
 }
 
 .tweet {
@@ -27,12 +69,13 @@ body {
 }
 
 .tweetLink {
-  color: black !important;
+  color: rgb(245, 0, 107) !important;
   text-align: left !important;
+  font-size: 75% !important;
 }
 
 .tweetLink:hover {
-  color: rgb(102, 153, 246) !important;
+  color: white !important;
 }
 
 .interestsBack {
@@ -45,12 +88,17 @@ body {
   padding: 20px !important;
 }
 
+.tweetBody {
+  color: white !important;
+}
+
 .tweetPosted {
-  font-size: 85% !important;
+  font-size: 55% !important;
   text-align: left !important;
   display: inline-block !important;
   margin-left: 10px !important;
   font-style: italic !important;
+  color: white !important;
 }
 
 .tweetMeta {
@@ -85,7 +133,15 @@ body {
 
 .nav {
   margin-bottom: 0px !important;
-  background-color: rgb(4, 4, 8) !important;
+  /*background-color: rgb(4, 4, 8) !important;*/
+  background-image:
+  linear-gradient(
+    to right,
+    yellow,
+    orange,
+    rgb(250, 25, 127)
+  ) !important;
+
   /*position: -webkit-sticky !important;
   position: sticky !important;
   top: 20px;*/
@@ -96,14 +152,26 @@ body {
   margin-bottom: 20px !important;
 }
 
-.navheader {
-  font-family: 'Warnes', cursive;
-  font-size: 35px;
+/*.navheader:hover {
+  color: #c603ac !important;
+  /*text-shadow: 0 0 0 #c603ac !important;*/
+  /*text-shadow: 0 0 10px #ffffff,
+             0 0 20px  #ffffff,
+             0 0 30px  #ffffff,
+             0 0 40px  #c603ac,
+             0 0 70px  #c603ac,
+             0 0 80px  #c603ac,
+             0 0 100px #c603ac,
+             0 0 150px #c603ac;*/
+
+.neon {
+  font-family: 'Monoton', cursive;
+  font-size: 40px;
   margin-bottom: 0px;
   text-align: center !important;
   /*margin-left: 260%;*/
   /*margin-right: auto;*/
-  color: white !important;
+  color: #ffffff !important;
   text-align: center;
   text-shadow: 0 0 10px #ffffff,
              0 0 20px  #ffffff,
@@ -115,81 +183,80 @@ body {
              0 0 150px #c603ac;
 
     /*Animation*/
-  -webkit-animation: neonAnimation 1.5s ease-in-out infinite alternate;
-  -moz-animation: neonAnimation 1.5s ease-in-out infinite alternate;
-  animation: neonAnimation 1.5s ease-in-out infinite alternate;
-
+    -webkit-animation: neonAnimation 1.5s ease-in-out infinite alternate;
+    -moz-animation: neonAnimation 1.5s ease-in-out infinite alternate;
+    animation: neonAnimation 1.5s ease-in-out infinite alternate;
 }
 /*Webkit prefix*/
-      @-webkit-keyframes neonAnimation {
-        from {
-          text-shadow: 0 0 10px #ffffff,
-                     0 0 20px  #ffffff,
-                     0 0 30px  #ffffff,
-                     0 0 40px  #c603ac,
-                     0 0 70px  #c603ac,
-                     0 0 80px  #c603ac,
-                     0 0 100px #c603ac,
-                     0 0 150px #c603ac;
-        }
-        to {
-          text-shadow: 0 0 10px #ffffff,
-                     0 0 20px  #ffffff,
-                     0 0 30px  #ffffff,
-                     0 0 40px  #c603ac,
-                     0 0 70px  #c603ac,
-                     0 0 80px  #c603ac,
-                     0 0 100px #c603ac,
-                     0 0 150px #c603ac;
-        }
-      }
-
-      /*Moz prefix*/
-      @-moz-keyframes neonAnimation {
-        from {
-          text-shadow: 0 0 10px #ffffff,
-                     0 0 20px  #ffffff,
-                     0 0 30px  #ffffff,
-                     0 0 40px  #c603ac,
-                     0 0 70px  #c603ac,
-                     0 0 80px  #c603ac,
-                     0 0 100px #c603ac,
-                     0 0 150px #c603ac;
-        }
-        to {
-          text-shadow: 0 0 10px #ffffff,
-                     0 0 20px  #ffffff,
-                     0 0 30px  #ffffff,
-                     0 0 40px  #c603ac,
-                     0 0 70px  #c603ac,
-                     0 0 80px  #c603ac,
-                     0 0 100px #c603ac,
-                     0 0 150px #c603ac;
-        }
-      }
-
-      /*No prefix*/
-      @keyframes neonAnimation {
-        from {
-          text-shadow: 0 0 10px #ffffff,
-                     0 0 20px  #ffffff,
-                     0 0 30px  #ffffff,
-                     0 0 40px  #c603ac,
-                     0 0 70px  #c603ac,
-                     0 0 80px  #c603ac,
-                     0 0 100px #c603ac,
-                     0 0 150px #c603ac;
-        }
-        to {
-          text-shadow: 0 0 10px #ffffff,
-                     0 0 20px  #ffffff,
-                     0 0 30px  #ffffff,
-                     0 0 40px  #c603ac,
-                     0 0 70px  #c603ac,
-                     0 0 80px  #c603ac,
-                     0 0 100px #c603ac,
-                     0 0 150px #c603ac;
+@-webkit-keyframes neonAnimation {
+  from {
+    text-shadow: 0 0 10px #ffffff,
+               0 0 20px  #ffffff,
+               0 0 30px  #ffffff,
+               0 0 40px  #c603ac,
+               0 0 70px  #c603ac,
+               0 0 80px  #c603ac,
+               0 0 100px #c603ac,
+               0 0 150px #c603ac;
   }
+  to {
+    text-shadow: 0 0 5px #ffffff,
+               0 0 10px #ffffff,
+               0 0 15px #ffffff,
+               0 0 20px #c603ac,
+               0 0 35px #c603ac,
+               0 0 40px #c603ac,
+               0 0 50px #c603ac,
+               0 0 75px #c603ac;
+  }
+}
+
+/*Moz prefix*/
+@-moz-keyframes neonAnimation {
+  from {
+    text-shadow: 0 0 10px #ffffff,
+               0 0 20px  #ffffff,
+               0 0 30px  #ffffff,
+               0 0 40px  #c603ac,
+               0 0 70px  #c603ac,
+               0 0 80px  #c603ac,
+               0 0 100px #c603ac,
+               0 0 150px #c603ac;
+  }
+  to {
+    text-shadow: 0 0 5px #ffffff,
+               0 0 10px #ffffff,
+               0 0 15px #ffffff,
+               0 0 20px #c603ac,
+               0 0 35px #c603ac,
+               0 0 40px #c603ac,
+               0 0 50px #c603ac,
+               0 0 75px #c603ac;
+  }
+}
+
+/*No prefix*/
+@keyframes neonAnimation {
+  from {
+    text-shadow: 0 0 10px #ffffff,
+               0 0 20px  #ffffff,
+               0 0 30px  #ffffff,
+               0 0 40px  #c603ac,
+               0 0 70px  #c603ac,
+               0 0 80px  #c603ac,
+               0 0 100px #c603ac,
+               0 0 150px #c603ac;
+  }
+  to {
+    text-shadow: 0 0 5px #ffffff,
+          0 0 10px #ffffff,
+          0 0 15px #ffffff,
+          0 0 20px #c603ac,
+          0 0 35px #c603ac,
+          0 0 40px #c603ac,
+          0 0 50px #c603ac,
+          0 0 75px #c603ac;
+}
 }
 
 @keyframes blinker {
@@ -203,6 +270,11 @@ body {
   font-weight: bold;
   font-style: italic;
   height: 3000px;
+  cursor: pointer;
+}
+
+.dashCloud {
+  cursor: pointer;
 }
 
 .trendsLoader {
@@ -216,18 +288,17 @@ body {
 }
 
 
-.header {
-  font-family: 'Plaster';
-  font-size: 20px;
-  margin-bottom: 0px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .likesRetweets {
   font-size: medium !important;
   color: white !important;
+}
+.landing {
+  font-size: 1000% !important;
+}
+
+.login {
+  font-family: 'Warnes', cursive !important;
 }
 
 /*.background {
@@ -238,14 +309,25 @@ body {
   background: transparent !important;
   color: white !important;
 }
+/*<a href='http://lanlinglaurel.com/road-image/5078689.html'>Road Image </a>*/
+/*https://ak9.picdn.net/shutterstock/videos/2729330/thumb/1.jpg?*/
+/*https://tau0.files.wordpress.com/2012/11/pano_ft_davis_road.jpg*/
 
-.parallax {
-    background-image: url("https://ak9.picdn.net/shutterstock/videos/2729330/thumb/1.jpg");
+/*.parallax {
+    background-image: url('https://tau0.files.wordpress.com/2012/11/pano_ft_davis_road.jpg');
     height: 100%;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}*/
+
+.navLink {
+  color: white !important;
+}
+
+.navLink:hover {
+  color: orange !important;
 }
 
 .moreArticles {
@@ -258,17 +340,26 @@ body {
   font-weight: bold;
   font-style: italic;
 }*/
+.mainArticleLink {
+  color: white !important;
+  font-size: 75% !important;
+}
+
+.mainArticleLink:hover {
+  color: rgb(245, 0, 107) !important;
+}
 
 .articleLink {
   color: white !important;
 }
 
 .articleLink:hover {
-  color: rgb(102, 153, 246) !important;
+  color: rgb(245, 0, 107) !important;
 }
-.steps {
-  /*background-color: rgb(102, 153, 246) !important;*/
-}
+/*.steps {
+  margin-top: 10px !important;
+}*/
+
 .pieLabels {
   text-align: center !important;
   display: inline !important;
@@ -320,9 +411,17 @@ body {
 }*/
 
 .articles {
-  background: rgba(165, 165, 165, 0.07) !important;
-  border-radius: 15px 50px !important;
+  border: 1px solid transparent !important;
+  -moz-border-image: -moz-linear-gradient(left, yellow, orange, rgb(250, 25, 127)) !important;
+  -webkit-border-image: -webkit-linear-gradient(left, yellow, orange, rgb(250, 25, 127)) !important;
+  border-image: linear-gradient(to right, yellow, orange, rgb(250, 25, 127)) !important;
+  border-image-slice: 1 !important;
+  /*border-color: rgb(255, 131, 0) !important;*/
+  background: black !important;
+  border-radius: 2em !important;
   padding: 20px !important;
+  font-size: large !important;
+  /*border-color: rgba(255, 118, 21) !important;*/
 }
 
 

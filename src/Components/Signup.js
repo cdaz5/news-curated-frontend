@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Grid, Button, Form, Segment, Divider, Message } from 'semantic-ui-react';
-import Interests from './Interests'
+import { Grid, Button, Form, Message } from 'semantic-ui-react';
 import Step from './Step'
-
 // import LoginFB from './LoginFB'
 
 export default class SignUp extends Component {
@@ -35,11 +33,12 @@ export default class SignUp extends Component {
 
   renderErrorMessage = () => {
      if (!!this.props.errors && this.props.errors.length > 0) {
+       const items = this.props.errors.map(error => error)
       return (<Message
         color='red'
         className='loginSignupMessage'
-        header={this.props.errors}
-        content='Please try again'
+        header='Apologies!'
+        list={items}
       />)
     } else {
       return null
@@ -51,7 +50,7 @@ export default class SignUp extends Component {
       <div className='parallax height'>
         <Grid centered columns={3}>
           <Grid.Column verticalAlign='top'>
-            <Step />
+            <span className='neon login'>Signup, Choose Your Interests, Enjoy!</span>
             {this.renderErrorMessage()}
             <Form onSubmit={this.handleSubmit}>
               <Form.Field>
@@ -81,7 +80,7 @@ export default class SignUp extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Field>
-              <Button size='huge' type='submit'>Sign Up</Button>
+              <Button size='huge' color='pink' type='submit'>Sign Up</Button>
             </Form>
           </Grid.Column>
         </Grid>
@@ -92,4 +91,4 @@ export default class SignUp extends Component {
 
 
 
-{/* <LoginFB onSignupLoginFB={this.props.onSignupLoginFB} /> */}
+/* <LoginFB onSignupLoginFB={this.props.onSignupLoginFB} /> */

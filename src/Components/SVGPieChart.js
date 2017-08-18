@@ -19,10 +19,10 @@ const SVGPieChart = ({data}) => {
         radius={35}
       />
       <div className='pieLabelContainer'>
-      {data.map((label) => (
-        <div className='pieLabels'>| {label.key}: {label.value} | </div>
-      ))}
-    </div>
+        {data.map((label, idx) => (
+          <div className='pieLabels' style={{color: label.color}}> | {label.key}: {label.value} | </div>
+        ))}
+      </div>
     </div>
   )
 }

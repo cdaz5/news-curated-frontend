@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Feed, Item, Icon, Dimmer, Loader } from 'semantic-ui-react';
+import { Segment, Item, Icon, Dimmer, Loader } from 'semantic-ui-react';
 import SavedArticle from '../Components/SavedArticle';
 import Tweet from '../Components/Tweet';
 import SVGPieChart from '../Components/SVGPieChart'
@@ -33,6 +33,8 @@ export default class FavoritesContainer extends Component {
         return '#84ff00'
       case 'neutral':
         return '#fff835'
+      default:
+        return '#fff835'
     }
   }
 
@@ -49,17 +51,15 @@ export default class FavoritesContainer extends Component {
   render() {
     return (
       <div>
-        <div className='newsfeed'>
-          <Segment raised className='newsfeed'>
-            <Item.Header className='newsfeed'>Favorites <Icon name='like' color='red'/></Item.Header>
+          <Segment className='newsfeed'>
+            <Item.Header >Favorites <Icon name='like' color='red'/></Item.Header>
           </Segment>
-        </div>
         <Item.Group relaxed>
           {this.renderSavedArticles()}
         </Item.Group>
         {this.props.sentiment.length > 0 ?
-         <Segment raised className='newsfeed'>
-          <Item.Header className='newsfeed'>Article Sentiment <Icon name='thermometer three quarters' color='red' /></Item.Header>
+         <Segment className='newsfeed'>
+          <Item.Header>Article Sentiment <Icon name='thermometer three quarters' color='red' /></Item.Header>
         </Segment> : null}
         <div>
           <Dimmer active={this.props.pieActive}>
@@ -67,8 +67,8 @@ export default class FavoritesContainer extends Component {
           </Dimmer>
           {this.renderPieChart()}
         </div>
-         <Segment raised className='newsfeed'>
-          <Item.Header className='newsfeed'>Twitter Feed <Icon name='twitter' color='blue'/></Item.Header>
+         <Segment className='newsfeed'>
+          <Item.Header>Twitter Feed <Icon name='twitter' className='cloud'/></Item.Header>
 
         </Segment>
         <Item.Group relaxed>

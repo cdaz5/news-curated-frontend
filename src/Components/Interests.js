@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Image, Grid, Button, Input } from 'semantic-ui-react';
+import { Button, Input } from 'semantic-ui-react';
 import Categories from '../CategoryData/Categories.js';
-import InterestCard from './InterestCard';
 import { TagCloud } from 'react-tagcloud';
 import history from '../history';
 
@@ -58,8 +57,8 @@ export default class InterestsForm extends Component {
           animationDelay: `${Math.random() * 6}s`,
           fontSize: `${size}em`,
           // border: `2px solid ${color}`,
-          margin: '5px',
-          padding: '3px',
+          margin: '6px',
+          padding: '4px',
           display: 'inline-block',
           color: tag.color,
         }}>{tag.value}</span>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Popup, Loader, Accordion, Button, Icon, Image as ImageComponent, Item, Label, Card } from 'semantic-ui-react'
+import { Popup, Accordion, Icon, Item, Label } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 
@@ -48,15 +48,13 @@ export default class Article extends Component {
     const summary = this.props.article.summary.sentences.map((sentence, idx) => { return <li key={idx}>{sentence}</li>})
     return (
       <Item className='articles'>
-
         <Item.Image size='medium' src={this.renderPic()}/>
         <Item.Content>
-          <Item.Header><Link to={this.props.article.links.permalink} target="_blank" className='articleLink'>{this.props.article.title}</Link></Item.Header>
+          <Item.Header><Link to={this.props.article.links.permalink} target="_blank" className='mainArticleLink'>{this.props.article.title}</Link></Item.Header>
           <Item.Meta>
             <div className='socialContainer'>
               <div className='articleSocial'>
                 <Popup
-                  inverted
                   trigger={<span><Icon size='large' color='blue' name='facebook official'/>{this.renderFbShares()}</span>}
                   content='Number of Shares on Facebook'
                   position='top center'
@@ -64,7 +62,6 @@ export default class Article extends Component {
               </div>
               <div className='articleSocial'>
                 <Popup
-                  inverted
                   trigger={<span><Icon size='large' color='blue' name='linkedin square'/>{this.renderLinkedinShares()}</span>}
                   content='Number of Shares on LinkedIn'
                   position='top center'
@@ -72,8 +69,7 @@ export default class Article extends Component {
               </div>
               <div className='articleSocialHeart'>
                 <Popup
-                  inverted
-                  trigger={<Icon size='large' floated='right' name='like' onClick={() => {this.props.handleSaveArticle(this.props.article)}} />}
+                  trigger={<Icon size='large' name='like' color='grey' onClick={() => {this.props.handleSaveArticle(this.props.article)}} />}
                   content='Click to Save for Later!'
                   position='right center'
                  />

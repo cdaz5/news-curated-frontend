@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { TagCloud } from 'react-tagcloud';
-import { Segment, Item, Icon, Modal, Dimmer, Loader } from 'semantic-ui-react';
+import { Segment, Item, Icon, Dimmer, Loader } from 'semantic-ui-react';
 import WordCloud from '../Components/WordCloud';
 
 
@@ -52,6 +51,7 @@ export default class TrendsContainer extends Component {
   //   }
   // }
 
+
   renderTrends = () => {
     if (this.props.trends) {
       const data = this.props.trends.map((word) => {
@@ -88,11 +88,9 @@ export default class TrendsContainer extends Component {
   render() {
     return (
       <div>
-        <div className='newsfeed'>
-          <Segment raised className='newsfeed spacer'>
-            <Item.Header className='newsfeed'>Article Word Cloud <Icon name='cloud' color='blue'/></Item.Header>
-          </Segment>
-        </div>
+        <Segment className='newsfeed spacer'>
+          <Item.Header>Article Word Cloud <Icon name='cloud' className='cloud'/></Item.Header>
+        </Segment>
         <Dimmer active={this.props.trendsActive}>
           <Loader className='trendsLoader' size='massive'>Fetching Keywords</Loader>
         </Dimmer>

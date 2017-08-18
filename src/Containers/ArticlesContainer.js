@@ -18,15 +18,13 @@ export default class ArticlesContainer extends Component {
 
     return (
       <div>
-        <div className='newsfeed'>
-          <Segment raised className='newsfeed'>
-            <Item.Header className='newsfeed'>NewsFeed <Icon name='feed' color='orange'/></Item.Header>
-          </Segment>
-        </div>
+        <Segment className='newsfeed'>
+          <Item.Header className='header' >NewsFeed <Icon name='feed' color='orange'/></Item.Header>
+        </Segment>
         <Dimmer active={this.props.active}>
           <Loader className='trendsLoader' size='massive'>Fetching News</Loader>
         </Dimmer>
-        <Item.Group relaxed>
+        <Item.Group >
           {articles}
         </Item.Group>
         <Segment className='moreArticles' textAlign='center'>
