@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Grid, Button, Form, Message } from 'semantic-ui-react';
-import Step from './Step'
 // import LoginFB from './LoginFB'
 
 export default class SignUp extends Component {
