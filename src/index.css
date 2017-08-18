@@ -183,9 +183,9 @@ rgb(250, 25, 127	*/
              0 0 150px #c603ac;
 
     /*Animation*/
-    -webkit-animation: neonAnimation 1.5s ease-in-out infinite alternate;
-    -moz-animation: neonAnimation 1.5s ease-in-out infinite alternate;
-    animation: neonAnimation 1.5s ease-in-out infinite alternate;
+    -webkit-animation: neonAnimation 1s ease-in-out infinite alternate;
+    -moz-animation: neonAnimation 1s ease-in-out infinite alternate;
+    animation: neonAnimation 1s ease-in-out infinite alternate;
 }
 /*Webkit prefix*/
 @-webkit-keyframes neonAnimation {
