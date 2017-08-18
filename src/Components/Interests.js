@@ -4,6 +4,8 @@ import Categories from '../CategoryData/Categories.js';
 import { TagCloud } from 'react-tagcloud';
 import history from '../history';
 
+const baseUrl = process.env.REACT_API
+
 export default class InterestsForm extends Component {
   constructor(props) {
     super()
@@ -29,7 +31,7 @@ export default class InterestsForm extends Component {
     const stringInterests = this.state.interests.join(' OR ')
     const newInterests = {interests: stringInterests}
     debugger
-    fetch(process.env.REACT_API + '/users/edit', {
+    fetch(`${baseUrl}/users/edit`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

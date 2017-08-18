@@ -2,7 +2,7 @@ const baseUrl = process.env.REACT_API
 
 export default class AuthAdapter {
   static login (loginParams) {
-    return fetch(process.env.REACT_API + '/login', {
+    return fetch(`${baseUrl}/login`, {
       method: 'POST',
       headers: headers(),
       body: JSON.stringify(loginParams)
@@ -10,7 +10,7 @@ export default class AuthAdapter {
   }
 
   static signUp (signUpParams) {
-    return fetch(`${process.env.REACT_API}/signup`, {
+    return fetch(`${baseUrl}/signup`, {
       method: 'POST',
       headers: headers(),
       body: JSON.stringify(signUpParams)

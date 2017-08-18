@@ -66,7 +66,7 @@ class App extends Component {
     //   }
     // })
     // debugger
-    console.log('in signup in app compnenet')
+    // console.log('in signup in app compnenet')
     AuthAdapter.signUp(signUpParams)
     .then(resp => {
       if (resp.error) {
