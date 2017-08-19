@@ -100,9 +100,9 @@ export default class AppConatiner extends Component {
         })
         return jsonObject
       })
-      .then(jsonObject => {
-          return this.fetchTweets()
-        })
+      // .then(jsonObject => {
+      //     return this.fetchTweets()
+      //   })
         .then(jsonObject => {
           if (!!this.state.savedArticles[0]) {
             const articleIds = this.state.savedArticles.map(article => {return  {id: article.aylien_id}})
@@ -326,6 +326,7 @@ export default class AppConatiner extends Component {
                 trends={this.state.trends}
                 trendsActive={this.state.trendsLoader}
                 sentiment={this.state.sentiment}
+                articles={this.state.articles}
               />
             </Grid.Column>
           </Grid.Row>

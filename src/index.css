@@ -78,6 +78,47 @@ rgb(250, 25, 127	*/
   color: white !important;
 }
 
+.modalLinks {
+  color: white !important;
+  font-size: 100% !important;
+}
+
+.modalLinks:hover {
+  color: rgb(245, 0, 107) !important;
+  font-size: 150% !important;
+}
+
+.modalHeader {
+  background: -webkit-linear-gradient(left, yellow, orange, rgb(250, 25, 127));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Roboto Slab', serif !important;
+  text-align: center;
+  font-size: 500% !important;
+  font-weight: bold !important;
+  /*font-style: italic;*/
+  text-decoration: underline !important;
+}
+
+.modalDescription {
+  font-family: 'Roboto Slab', serif !important;
+  font-size: 250% !important;
+  text-align: center !important;
+  font-style: italic;
+}
+
+.modalLinksLine {
+  font-family: 'Roboto Slab', serif !important;
+  font-size: 180% !important;
+  margin-bottom: 0px !important;
+}
+
+.modalUl {
+  margin-top: 0px !important;
+}
+
+
+
 .interestsBack {
   height: 5000px !important;
 }
@@ -104,21 +145,6 @@ rgb(250, 25, 127	*/
 .tweetMeta {
   font-size: large !important;
   color: black !important;
-}
-
-.modalHeader {
-  text-align: center;
-  font-size: 800% !important;
-  font-weight: bold;
-  font-style: italic;
-  text-decoration: underline !important;
-}
-
-.modalContent {
-  text-align: center;
-  font-size: 600% !important;
-  font-weight: bold;
-  font-style: italic;
 }
 
 .height {

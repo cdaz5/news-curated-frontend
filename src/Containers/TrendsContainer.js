@@ -8,15 +8,18 @@ export default class TrendsContainer extends Component {
 
   state = {
     isOpen: false,
-    tag: {}
+    tag: {},
+    keywordArticles: []
   }
 
 
   handleClick = (tag) => {
-    // alert(`${tag.value} is mentioned ${tag.count} times.`)
+    const articlesWithKeywords = this.props.articles.filter((article) => {return article.keywords.includes(tag.value)})
+    // debugger
     this.setState({
       isOpen: !this.state.isOpen,
-      tag: tag
+      tag: tag,
+      keywordArticles: articlesWithKeywords
     })
   }
 
@@ -57,7 +60,7 @@ export default class TrendsContainer extends Component {
       const data = this.props.trends.map((word) => {
         return { value: word.value, count: word.count }
       })
-      return <WordCloud open={this.state.isOpen} customRenderer={this.customRenderer} handleMouseMove={this.handleMouseMove} handleClose={this.handleClose} tag={this.state.tag} minSize={2} maxSize={3} data={data} handleClick={this.handleClick} />
+      return <WordCloud open={this.state.isOpen} articlesWithKeywords={this.state.keywordArticles} customRenderer={this.customRenderer} handleMouseMove={this.handleMouseMove} handleClose={this.handleClose} tag={this.state.tag} minSize={2} maxSize={3} data={data} handleClick={this.handleClick} />
     } else {
       return null
     }
