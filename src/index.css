@@ -368,7 +368,8 @@ rgb(250, 25, 127	*/
 }*/
 .mainArticleLink {
   color: white !important;
-  font-size: 75% !important;
+  font-size: 55% !important;
+  line-height: 1px !important;
 }
 
 .mainArticleLink:hover {
