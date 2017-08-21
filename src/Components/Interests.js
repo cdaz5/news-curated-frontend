@@ -3,6 +3,9 @@ import { Button, Input } from 'semantic-ui-react';
 import Categories from '../CategoryData/Categories.js';
 import { TagCloud } from 'react-tagcloud';
 import history from '../history';
+// import 'introjs.css';
+// import './index.css';
+import { Steps } from 'intro.js-react';
 
 const BASE_URL = process.env.REACT_APP_API
 
@@ -16,8 +19,30 @@ export default class InterestsForm extends Component {
     this.state = {
       interests: [],
       categories: allCategories,
-      searchTerm: ''
+      searchTerm: '',
+      stepsEnabled: true,
+      initialStep: 0,
+      steps: [
+        {
+          element: '.step1',
+          intro: 'Choose a minimum of 3 interests'
+        },
+        {
+          element: '.step2',
+          intro: 'You can search for interests here...'
+        },
+        {
+          element: '.step3',
+          intro: 'or click them directly here. They turn red when chosen.  Enjoy!'
+        }
+      ]
     }
+  }
+
+  onExit = () => {
+    this.setState({
+      stepsEnabled: !this.state.stepsEnabled
+    })
   }
 
   handleClick = (tag) => {
@@ -73,14 +98,20 @@ export default class InterestsForm extends Component {
     return (
 
       <div className='parallax'>
+        <Steps
+          enabled={this.state.stepsEnabled}
+          steps={this.state.steps}
+          initialStep={this.state.initialStep}
+          onExit={this.onExit}
+        />
         <div className='interestsBack'>
           <div className='interestSearch'>
-            <div className='neon login'>
+            <span className='neon login step1'>
               choose at least 3 interests
-            </div>
+            </span>
             <div>
               <span>
-                <Input inverted size='small' icon='search' placeholder='Search...' value={this.state.searchTerm} onChange={this.handleChange} />
+                <Input inverted size='small' icon='search' placeholder='Search...' value={this.state.searchTerm} onChange={this.handleChange} className='step2'/>
               </span>
               <span>
                 &nbsp;&nbsp;

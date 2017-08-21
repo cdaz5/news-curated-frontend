@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Segment, Item, Icon, Dimmer, Loader } from 'semantic-ui-react';
 import WordCloud from '../Components/WordCloud';
+import { Steps } from 'intro.js-react';
 
 
 
@@ -9,7 +10,7 @@ export default class TrendsContainer extends Component {
   state = {
     isOpen: false,
     tag: {},
-    keywordArticles: []
+    keywordArticles: [],
   }
 
 
@@ -19,7 +20,7 @@ export default class TrendsContainer extends Component {
     this.setState({
       isOpen: !this.state.isOpen,
       tag: tag,
-      keywordArticles: articlesWithKeywords
+      keywordArticles: articlesWithKeywords,
     })
   }
 

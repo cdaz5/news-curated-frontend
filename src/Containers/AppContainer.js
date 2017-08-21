@@ -3,6 +3,7 @@ import { Grid } from 'semantic-ui-react';
 import ArticlesContainer from './ArticlesContainer';
 import FavoritesContainer from './FavoritesContainer';
 import TrendsContainer from './TrendsContainer';
+import { Steps, Hints } from 'intro.js-react';
 
 
 const BASE_URL = process.env.REACT_APP_API
@@ -19,7 +20,7 @@ export default class AppConatiner extends Component {
     tweetsLoader: true,
     trendsLoader: true,
     articlesLoader: true,
-    pieLoader: true
+    pieLoader: true,
   }
 
   deleteSavedArticle = (deleteArticle) => {
@@ -46,7 +47,7 @@ export default class AppConatiner extends Component {
       }
     )
   }
-
+// this.state.articles.length > 10 ? false : true
 
   fetchArticles = () => {
     this.setState({ articlesLoader: true, trendsLoader: true, tweetsLoader: true, pieLoader:true})
@@ -72,11 +73,11 @@ export default class AppConatiner extends Component {
               return mapObj
             }
       })});
-      // debugger
+
       this.setState({
         articles: [...this.state.articles, ...cleanArticles],
         nextPageCursor: jsonObject.next_page_cursor,
-        articlesLoader: !this.state.articlesLoader
+        articlesLoader: !this.state.articlesLoader,
       })
       return jsonObject
     }).then(jsonObject => {
@@ -100,9 +101,9 @@ export default class AppConatiner extends Component {
         })
         return jsonObject
       })
-      .then(jsonObject => {
-          return this.fetchTweets()
-        })
+      // .then(jsonObject => {
+      //     return this.fetchTweets()
+      //   })
         .then(jsonObject => {
           if (!!this.state.savedArticles[0]) {
             const articleIds = this.state.savedArticles.map(article => {return  {id: article.aylien_id}})
@@ -135,7 +136,9 @@ export default class AppConatiner extends Component {
     }
 
 
-
+    onExit = () => {
+      console.log('on exit')
+    }
 
 
 
@@ -254,6 +257,8 @@ export default class AppConatiner extends Component {
     // }.bind(this), 5000)
   }
 
+
+
   formatSaveArticleObject = (article) => {
     return {
       title: article.title,
@@ -319,6 +324,7 @@ export default class AppConatiner extends Component {
                 handleSaveArticle={this.handleSaveArticle}
                 fetchArticles={this.fetchArticles}
                 active={this.state.articlesLoader}
+                onExit={this.onExit}
               />
             </Grid.Column>
             <Grid.Column width={4}>

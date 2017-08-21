@@ -34,7 +34,8 @@ const wordCloud = ({open, tag, handleClose, minSize, maxSize, data, handleClick,
                 onClick={(tag) => {handleClick(tag)}}
                 renderer={customRenderer}
       />
-  </div>
+    </div>
   )
 }
+
 export default wordCloud

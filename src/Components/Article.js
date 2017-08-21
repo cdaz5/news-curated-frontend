@@ -1,9 +1,50 @@
 import React, { Component } from 'react'
 import { Popup, Accordion, Icon, Item, Label } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
+import { Steps, Hints } from 'intro.js-react';
 
 
 export default class Article extends Component {
+
+  state = {
+    initialStep: 0,
+    steps: [
+      {
+        element: '.step1',
+        intro: 'Contains articles based on your interests.',
+      },
+      {
+        element: '.step2',
+        intro: 'Individual article.',
+      },
+      {
+        element: '.step3',
+        intro: 'Number of times the article has been shared on Facebook.',
+      },
+      {
+        element: '.step4',
+        intro: 'Number of times the article has been shared on LinkedIn.',
+      },
+      {
+        element: '.step5',
+        intro: 'Click the heart icon to save an article for later.  Go ahead and try it right now!... Seriously, click it... we\'ll wait.',
+      },
+      {
+        element: '.step6',
+        intro: 'Click here to reveal a bulleted list summary of the article.',
+      },
+      {
+        element: '.step7',
+        intro: 'Shows the article sentiment polarity and percentage.',
+      },
+     ],
+  }
+
+  // onExit = () => {
+  //   this.setState({
+  //     stepsEnabled: !this.state.stepsEnabled
+  //   })
+  // }
 
 
   renderPic = () => {
@@ -47,7 +88,17 @@ export default class Article extends Component {
   render() {
     const summary = this.props.article.summary.sentences.map((sentence, idx) => { return <li key={idx}>{sentence}</li>})
     return (
-      <Item className='articles'>
+      <Item className='articles step2'>
+        <Steps
+          enabled={this.props.allArticles.length > 10 ? false : true}
+          steps={this.state.steps}
+          initialStep={this.state.initialStep}
+          onExit={this.props.onExit}
+        />
+        <Hints
+          enabled={this.state.hintsEnabled}
+          hints={this.state.hints}
+        />
         <Item.Image size='medium' src={this.renderPic()}/>
         <Item.Content>
           <Item.Header><Link to={this.props.article.links.permalink} target="_blank" className='mainArticleLink'>{this.props.article.title}</Link></Item.Header>
@@ -55,21 +106,21 @@ export default class Article extends Component {
             <div className='socialContainer'>
               <div className='articleSocial'>
                 <Popup
-                  trigger={<span><Icon size='large' color='blue' name='facebook official'/>{this.renderFbShares()}</span>}
+                  trigger={<span className='step3'><Icon size='large' color='blue' name='facebook official' />{this.renderFbShares()}</span>}
                   content='Number of Shares on Facebook'
                   position='top center'
                 />
               </div>
               <div className='articleSocial'>
                 <Popup
-                  trigger={<span><Icon size='large' color='blue' name='linkedin square'/>{this.renderLinkedinShares()}</span>}
+                  trigger={<span className='step4'><Icon size='large' color='blue' name='linkedin square' />{this.renderLinkedinShares()}</span>}
                   content='Number of Shares on LinkedIn'
                   position='top center'
                 />
               </div>
               <div className='articleSocialHeart'>
                 <Popup
-                  trigger={<Icon size='large' name='like' color='grey' onClick={() => {this.props.handleSaveArticle(this.props.article)}} />}
+                  trigger={<Icon className='step5' size='large' name='like' color='white' onClick={() => {this.props.handleSaveArticle(this.props.article)}} />}
                   content='Click to Save for Later!'
                   position='right center'
                  />
@@ -78,7 +129,7 @@ export default class Article extends Component {
           </Item.Meta>
           <Item.Description>
             <Accordion fluid className='accordion'>
-              <Accordion.Title className='accordion'>
+              <Accordion.Title className='accordion step6'>
                 <Icon name='dropdown' />
                 Article Summary
               </Accordion.Title>
@@ -89,7 +140,7 @@ export default class Article extends Component {
               </Accordion.Content>
             </Accordion>
           </Item.Description>
-          <Item.Extra>
+          <Item.Extra className='step7'>
             <Label basic size='small' color='purple' pointing='right'>Sentiment</Label>
             {this.renderSentiment()}
           </Item.Extra>

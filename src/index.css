@@ -4,7 +4,7 @@ body {
   font-family: sans-serif;
   height: 1000px;
   background-color: black !important;
-  line-height: normal !important;
+  line-height: .9 !important;
 }
 
 .header {
@@ -321,6 +321,7 @@ rgb(250, 25, 127	*/
 }
 .landing {
   font-size: 1000% !important;
+  margin-bottom: 15px !important;
 }
 
 .login {
@@ -372,6 +373,10 @@ rgb(250, 25, 127	*/
   line-height: 1px !important;
 }
 
+.myHighlightClass {
+  color: transparent !important;
+}
+
 .mainArticleLink:hover {
   color: rgb(245, 0, 107) !important;
 }
@@ -398,6 +403,14 @@ rgb(250, 25, 127	*/
   text-align: center !important;
 }
 
+.tooltipClass {
+  background: black !important;
+}
+
+.highlightClass {
+  background-color: black !important;
+}
+
 .articleSocial {
   color: white;
   text-align: center !important;
@@ -412,6 +425,7 @@ rgb(250, 25, 127	*/
   display: inline !important;
   text-align: right !important;
   margin-left: 5px !important;
+  color: white !important;
 }
 
 
