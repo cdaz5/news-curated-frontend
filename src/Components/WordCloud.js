@@ -24,7 +24,7 @@ const wordCloud = ({open, tag, handleClose, minSize, maxSize, data, handleClick,
         </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-            <Icon size='large' name='close' color='pink' onClick={() => {handleClose()}}/>
+            <Icon size='large' className='deleteIcon' name='close' color='pink' onClick={() => {handleClose()}}/>
         </Modal.Actions>
       </Modal>
       <TagCloud minSize={minSize}

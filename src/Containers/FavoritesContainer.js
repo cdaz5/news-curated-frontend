@@ -42,7 +42,7 @@ export default class FavoritesContainer extends Component {
     if (this.props.tweets.length > 0)
       return this.props.tweets.map((tweet, idx) => (
         // debugger
-       <Tweet tweet={tweet} tweetsActive={this.props.tweetsActive} />
+       <Tweet tweet={tweet} idx={idx} tweetsActive={this.props.tweetsActive} />
      ))
   }
 

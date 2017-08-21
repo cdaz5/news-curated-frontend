@@ -17,6 +17,10 @@ body {
   font-weight: bold !important;
 }
 
+.deleteIcon {
+  cursor: pointer !important;
+}
+
 .newsfeed {
   /*font-family: 'Pacifico', cursive !important;*/
   text-align: center;
@@ -313,6 +317,14 @@ rgb(250, 25, 127	*/
   padding-bottom: 10px;
 }
 
+.highlightClass {
+  opacity: .4 !important;
+}
+
+.introjs-overlay {
+  opacity: .3 !important;
+}
+
 
 
 .likesRetweets {
@@ -326,6 +338,7 @@ rgb(250, 25, 127	*/
 
 .login {
   font-family: 'Warnes', cursive !important;
+  /*margin-top: 3px !important;*/
 }
 
 /*.background {

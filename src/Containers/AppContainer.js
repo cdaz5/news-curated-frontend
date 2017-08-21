@@ -3,7 +3,6 @@ import { Grid } from 'semantic-ui-react';
 import ArticlesContainer from './ArticlesContainer';
 import FavoritesContainer from './FavoritesContainer';
 import TrendsContainer from './TrendsContainer';
-import { Steps, Hints } from 'intro.js-react';
 
 
 const BASE_URL = process.env.REACT_APP_API
@@ -47,7 +46,6 @@ export default class AppConatiner extends Component {
       }
     )
   }
-// this.state.articles.length > 10 ? false : true
 
   fetchArticles = () => {
     this.setState({ articlesLoader: true, trendsLoader: true, tweetsLoader: true, pieLoader:true})
@@ -101,9 +99,9 @@ export default class AppConatiner extends Component {
         })
         return jsonObject
       })
-      .then(jsonObject => {
-          return this.fetchTweets()
-        })
+      // .then(jsonObject => {
+      //     return this.fetchTweets()
+      //   })
         .then(jsonObject => {
           if (!!this.state.savedArticles[0]) {
             const articleIds = this.state.savedArticles.map(article => {return  {id: article.aylien_id}})
@@ -208,25 +206,6 @@ export default class AppConatiner extends Component {
     .catch(error => console.log(error))
   }
 
-  // fetchTwitterToken = () => {
-  //   const consumerKey = 'xvz1evFS4wEEPTGEFPHBog'
-  //   const consumerSecret = 'L8qq9PZyRg6ieKGEKhZolGC0vJWLw8iEJ88DRdyOg'
-  //   const tokenCredentials = consumerKey.concat(':',consumerSecret)
-  //   const encodedCredentials = btoa(tokenCredentials)
-  //   fetch('https://api.twitter.com/oauth2/token', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Authorization': 'Basic MUJzZ2xlTWpQVlMwZldFdzd6ak9nQVJ0dzplczEyR3JpUlRLekZUZ29XVkJCQkdyb0JtRTZZWDJqTE55MUw2TGhOS244MjhrUzh5TA==',
-  //       'Content-Type': 'application/x-www-form-urlencoded',
-  //       'Accept-Encoding': 'gzip',
-  //       'Content-Length': '29',
-  //     },
-  //     body: 'grant_type=client_credentials'
-  //   })
-  //   .then(resp => resp.json())
-  //   .then(jsonObject => {debugger})
-  //   .catch(error => console.log(error))
-  // }
 
   fetchSavedArticles = () => {
     fetch(`${BASE_URL}/user/articles`, {
@@ -263,7 +242,7 @@ export default class AppConatiner extends Component {
     return {
       title: article.title,
       summary: article.summary.sentences.join(' | '),
-      media_img_url: article.media[0].url,
+      media_img_url: !!article.media[0] ? article.media[0].url : 'https://vignette2.wikia.nocookie.net/inkagames-english/images/0/0e/No_image.jpg/revision/latest?cb=20170113194025',
       source_name: article.source.name,
       author: article.author.name,
       keywords: article.keywords.join(', '),

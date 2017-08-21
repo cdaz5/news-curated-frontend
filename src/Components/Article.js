@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Popup, Accordion, Icon, Item, Label } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
-import { Steps, Hints } from 'intro.js-react';
+import { Steps } from 'intro.js-react';
 
 
 export default class Article extends Component {
@@ -85,8 +85,15 @@ export default class Article extends Component {
   )
   }
 
+  articleSummary = () => {
+    if (this.props.article.summary.sentences.length > 0) {
+      return this.props.article.summary.sentences.map((sentence, idx) => { return <li key={idx}>{sentence}</li>})
+    } else {
+      return <li>Sorry, no summary available for this article.</li>
+    }
+  }
+
   render() {
-    const summary = this.props.article.summary.sentences.map((sentence, idx) => { return <li key={idx}>{sentence}</li>})
     return (
       <Item className='articles step2'>
         <Steps
@@ -94,10 +101,7 @@ export default class Article extends Component {
           steps={this.state.steps}
           initialStep={this.state.initialStep}
           onExit={this.props.onExit}
-        />
-        <Hints
-          enabled={this.state.hintsEnabled}
-          hints={this.state.hints}
+          highlightClass='highlightClass'
         />
         <Item.Image size='medium' src={this.renderPic()}/>
         <Item.Content>
@@ -120,7 +124,7 @@ export default class Article extends Component {
               </div>
               <div className='articleSocialHeart'>
                 <Popup
-                  trigger={<Icon className='step5' size='large' name='like' color='white' onClick={() => {this.props.handleSaveArticle(this.props.article)}} />}
+                  trigger={<Icon className='step5' size='large' name='like' onClick={() => {this.props.handleSaveArticle(this.props.article)}} />}
                   content='Click to Save for Later!'
                   position='right center'
                  />
@@ -135,7 +139,7 @@ export default class Article extends Component {
               </Accordion.Title>
               <Accordion.Content>
                 <ul>
-                  {summary}
+                  {this.articleSummary()}
                 </ul>
               </Accordion.Content>
             </Accordion>

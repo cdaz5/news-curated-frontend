@@ -49,7 +49,7 @@ export default class SignUp extends Component {
       <div className='parallax height'>
         <Grid centered columns={3}>
           <Grid.Column verticalAlign='top'>
-            <span className='neon login'>Signup, Choose Your Interests, Enjoy!</span>
+            <span className='neon login'>I need news in my life!</span>
             {this.renderErrorMessage()}
             <Form onSubmit={this.handleSubmit}>
               <Form.Field>

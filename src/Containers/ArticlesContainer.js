@@ -15,7 +15,6 @@ export default class ArticlesContainer extends Component {
         handleSaveArticle={this.props.handleSaveArticle}
         onExit={this.props.onExit}
         allArticles={this.props.articles}
-        onExit={this.props.onExit}
       /> })
 
     return (

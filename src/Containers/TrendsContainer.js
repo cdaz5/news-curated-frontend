@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Segment, Item, Icon, Dimmer, Loader } from 'semantic-ui-react';
 import WordCloud from '../Components/WordCloud';
-import { Steps } from 'intro.js-react';
 
 
 
@@ -48,13 +47,6 @@ export default class TrendsContainer extends Component {
         color: 'white',
       }}>{tag.value}</span>
   )
-
-  // componentWillReceiveProps = (nextProps) => {
-  //   if (nextProps.trends.length > 0) {
-  //     this.props.handleTrendsLoader()
-  //   }
-  // }
-
 
   renderTrends = () => {
     if (this.props.trends) {
@@ -104,16 +96,4 @@ export default class TrendsContainer extends Component {
       </div>
     )
   }
-
-  // <TagCloud minSize={20}
-  //   maxSize={45}
-  //   tags={data}
-  //   shuffle={false}
-  //   onClick={(tag) => {this.handleClick(tag)}}
-  //
-  // />
-
-
-
-
 }
