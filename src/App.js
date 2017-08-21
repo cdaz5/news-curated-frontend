@@ -18,6 +18,7 @@ class App extends Component {
       isLoggedIn: false,
       isFirstTime: false,
       user: '',
+      username: '',
       errors: []
     },
     submittedInterests: false,
@@ -51,6 +52,7 @@ class App extends Component {
           auth: {
             isLoggedIn: true,
             user: resp.email,
+            username: resp.name,
             errors: []
           }
         })
@@ -81,6 +83,7 @@ class App extends Component {
           auth: {
             isLoggedIn: true,
             user: resp.email,
+            username: resp.name,
             isFirstTime: true,
             errors: []
           }
@@ -108,7 +111,7 @@ class App extends Component {
     return (
       <Router history={history}>
         <div>
-          <Nav />
+          <Nav isLoggedIn={this.state.auth.isLoggedIn} username={this.state.auth.username}/>
           <Route exact path='/' render={() => this.state.auth.isLoggedIn ? <Redirect to='/dashboard'/> : <Landing/> } />
           <Route path='/interests' component={Authorize(Interests)}/>
           <Route path='/dashboard' component={Authorize(AppContainer)} />

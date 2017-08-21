@@ -8,19 +8,25 @@ export default class Nav extends Component {
     return (
       <Menu stackable borderless inverted className='nav'>
         <Menu.Item>
-          <div className="navheader neon">News, Curated</div>
+          <NavLink to='/' className="navheader neon">News, Curated</NavLink>
         </Menu.Item>
         <Menu.Item position="right">
-          <NavLink
-            className='navLink'
-            to="/interests"
-            >Edit Interests |
-          </NavLink>
-        <NavLink
-          className='navLink'
-          to="/logout"
-          >&nbsp;Logout
-        </NavLink>
+          { this.props.isLoggedIn ?
+          <span>
+            <h2>Hi, {this.props.username}</h2>
+            <NavLink
+              className='navLink'
+              to="/interests"
+              >Edit Interests |
+            </NavLink>
+            <NavLink
+              className='navLink'
+              to="/logout"
+              >&nbsp;Logout
+            </NavLink>
+          </span>
+          : null}
+
         </Menu.Item>
       </Menu>
     )
