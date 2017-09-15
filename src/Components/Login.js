@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import LoginFB from './LoginFB'
 import { Grid, Button, Form, Message } from 'semantic-ui-react';
 
 export default class LoginForm extends Component {
@@ -67,7 +66,3 @@ export default class LoginForm extends Component {
     )
   }
 }
-
-
-
-/* <LoginFB onSignupLoginFB={this.props.onSignupLoginFB} /> */

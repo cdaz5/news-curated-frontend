@@ -18,7 +18,6 @@ export default class FavoritesContainer extends Component {
       const data = this.props.sentiment.map((word) => {
         return { key: word.value, value: word.count, color: this.properColor(word.value) }
       })
-      // debugger
       return <SVGPieChart data={data} />
     } else {
       return null
@@ -41,7 +40,6 @@ export default class FavoritesContainer extends Component {
   renderTweets = () => {
     if (this.props.tweets.length > 0)
       return this.props.tweets.map((tweet, idx) => (
-        // debugger
        <Tweet tweet={tweet} idx={idx} tweetsActive={this.props.tweetsActive} />
      ))
   }

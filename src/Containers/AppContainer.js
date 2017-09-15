@@ -24,7 +24,6 @@ export default class AppConatiner extends Component {
 
   deleteSavedArticle = (deleteArticle) => {
     const articleId = {id: deleteArticle.id}
-    // debugge
     fetch(`${BASE_URL}/delete/saved_article`, {
       method: 'DELETE',
       headers: {
@@ -40,7 +39,6 @@ export default class AppConatiner extends Component {
         savedArticles: articles
       })
       setTimeout(function() {
-        // debugger
         this.state.savedArticles.length > 0 ? this.fetchSentimentData() : this.setState({ sentiment: [] })
       }.bind(this), 500)
       }
@@ -64,7 +62,6 @@ export default class AppConatiner extends Component {
 
       const cleanArticles = jsonObject.stories.filter((obj, pos, arr) => {
           return arr.map(mapObj =>  {
-            // debugger
             if (mapObj['media'].includes('url')) {
               return mapObj['media'][0]['url'].indexOf(obj['media'][0]['url']) === pos
             } else {
@@ -80,7 +77,6 @@ export default class AppConatiner extends Component {
       return jsonObject
     }).then(jsonObject => {
       const articleIds = this.state.articles.map(article => {return {id: article.id}})
-      // debugger
       const arrayOfIds = {articles: articleIds}
       fetch(`${BASE_URL}/trends`, {
         method: 'POST',
@@ -105,9 +101,7 @@ export default class AppConatiner extends Component {
         .then(jsonObject => {
           if (!!this.state.savedArticles[0]) {
             const articleIds = this.state.savedArticles.map(article => {return  {id: article.aylien_id}})
-            // debugger
             const arrayOfIds = {articles: articleIds}
-            // debugger
             fetch(`${BASE_URL}/sentiment`, {
               method: 'POST',
               headers: {
@@ -142,9 +136,7 @@ export default class AppConatiner extends Component {
 
     fetchSentimentData = () => {
       const articleIds = this.state.savedArticles.map(article => {return  {id: article.aylien_id}})
-      // debugger
       const arrayOfIds = {articles: articleIds}
-      // debugger
       fetch(`${BASE_URL}/sentiment`, {
         method: 'POST',
         headers: {
@@ -161,30 +153,12 @@ export default class AppConatiner extends Component {
         })
       })
     }
-  // fetchTrends = () => {
-  //   fetch(`${BASE_URL}/trends`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'content-type': 'application/json',
-  //       'accept': 'application/json',
-  //       'Authorization': localStorage.getItem('jwt')
-  //     }
-  //   })
-  //   .then(resp => resp.json())
-  //   .then(jsonObject => {
-  //     this.setState({
-  //       trends: [...jsonObject.trends]
-  //     })
-  //   })
-  // }
+
 
   fetchTweets = () => {
-    // debugger
     const hashtags = {
       hashtags: this.state.articles.map((article) => {return article.hashtags[0]}).join(' OR ')
       }
-    // debugger
-    console.log('fetching tweets')
     fetch(`${BASE_URL}/tweets`, {
       method: 'POST',
       headers: {
@@ -196,7 +170,6 @@ export default class AppConatiner extends Component {
       })
     .then(resp => resp.json())
     .then(jsonObject => {
-      // debugger
       this.setState({
         tweets: jsonObject,
         tweetsLoader: !this.state.tweetsLoader
@@ -229,11 +202,7 @@ export default class AppConatiner extends Component {
     setTimeout(function() {
       this.fetchArticles()
       this.fetchSavedArticles()
-      // this.fetchTrends()
     }.bind(this), 4000)
-    // setTimeout(function() {
-    //   this.fetchTweets()
-    // }.bind(this), 5000)
   }
 
 
@@ -269,7 +238,6 @@ export default class AppConatiner extends Component {
     })
     .then(resp => resp.json())
     .then(jsonObject => {
-      // debugger
       this.setState({
         savedArticles: [...this.state.savedArticles, jsonObject]
       })

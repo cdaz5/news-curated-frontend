@@ -3,8 +3,6 @@ import { Button, Input } from 'semantic-ui-react';
 import Categories from '../CategoryData/Categories.js';
 import { TagCloud } from 'react-tagcloud';
 import history from '../history';
-// import 'introjs.css';
-// import './index.css';
 import { Steps } from 'intro.js-react';
 
 const BASE_URL = process.env.REACT_APP_API
@@ -133,24 +131,3 @@ export default class InterestsForm extends Component {
     )
   }
 }
-
-
-
-
-
- //
- //   render() {
- //     const categories = this.state.categories.map((category) => {
- //       return <InterestCard category={category.label} />
- //     })
- //     return (
- //       <form>
- //         <Grid columns={6}>
- //          <Grid.Row>
- //            {categories}
- //          </Grid.Row>
- //        </Grid>
- //      </form>
- //     )
- //   }
- // }

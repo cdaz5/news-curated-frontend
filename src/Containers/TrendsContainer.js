@@ -15,7 +15,6 @@ export default class TrendsContainer extends Component {
 
   handleClick = (tag) => {
     const articlesWithKeywords = this.props.articles.filter((article) => {return article.keywords.includes(tag.value)})
-    // debugger
     this.setState({
       isOpen: !this.state.isOpen,
       tag: tag,
@@ -59,28 +58,6 @@ export default class TrendsContainer extends Component {
     }
   }
 
-  // properColor = (word) => {
-  //   switch (word) {
-  //     case 'negative':
-  //       return '#8c1104'
-  //     case 'positive':
-  //       return '#039926'
-  //     case 'neutral':
-  //       return '#d1c604'
-  //   }
-  // }
-  //
-  // renderPieChart = () => {
-  //   if (!!this.props.sentiment[0]) {
-  //     const data = this.props.sentiment.map((word) => {
-  //       return { name: word.value, value: word.count }
-  //     })
-  //     // debugger
-  //     return <SimplePie data={data} />
-  //   } else {
-  //     return null
-  //   }
-  // }
   render() {
     return (
       <div>

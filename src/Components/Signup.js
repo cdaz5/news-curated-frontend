@@ -17,12 +17,8 @@ export default class SignUp extends Component {
   }
 
   handleSubmit = (event) => {
-    // console.log("handle submit on signup component")
     event.preventDefault()
-    // this.context.history.push('/interests')
-    // debugger
     this.props.onSignup(this.state)
-    // console.log(this.state)
     this.setState({
       name: '',
       email: '',
@@ -87,7 +83,3 @@ export default class SignUp extends Component {
     )
   }
 }
-
-
-
-/* <LoginFB onSignupLoginFB={this.props.onSignupLoginFB} /> */
