@@ -16,7 +16,6 @@ class App extends Component {
   state = {
     auth: {
       isLoggedIn: false,
-      isFirstTime: false,
       user: '',
       username: '',
       errors: []
@@ -36,7 +35,6 @@ class App extends Component {
         errors: []
       }
     })
-    // debugger
     AuthAdapter.login(loginParams)
     .then(resp => {
       console.log(resp)
@@ -62,13 +60,6 @@ class App extends Component {
 
 
   onSignup = (signUpParams) => {
-    // this.setState({
-    //   auth: {
-    //     errors: []
-    //   }
-    // })
-    // debugger
-    // console.log('in signup in app compnenet')
     AuthAdapter.signUp(signUpParams)
     .then(resp => {
       if (resp.error) {
