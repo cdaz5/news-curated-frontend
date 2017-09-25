@@ -132,8 +132,6 @@ export default class AppConatiner extends Component {
       console.log('on exit')
     }
 
-
-
     fetchSentimentData = () => {
       const articleIds = this.state.savedArticles.map(article => {return  {id: article.aylien_id}})
       const arrayOfIds = {articles: articleIds}
