@@ -127,7 +127,6 @@ export default class AppConatiner extends Component {
       })
     }
 
-
     onExit = () => {
       console.log('on exit')
     }
