@@ -108,7 +108,6 @@ class App extends Component {
           <Route path='/dashboard' component={Authorize(AppContainer)} />
           <Route path='/signup' render={() => <Signup onSignup={this.onSignup} errors={this.state.auth.errors}/>} />
           <Route path='/login' render={() => this.state.auth.isLoggedIn ? <Redirect to='/dashboard'/> : <Login onLogin={this.onLogin.bind(this)} errors={this.state.auth.errors}/>} />
-
           <Route path='/logout' render={() => {
             this.onLogout()
             return (<Redirect to='/' />)
