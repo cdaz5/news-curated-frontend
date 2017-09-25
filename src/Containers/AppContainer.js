@@ -154,7 +154,6 @@ export default class AppConatiner extends Component {
       })
     }
 
-
   fetchTweets = () => {
     const hashtags = {
       hashtags: this.state.articles.map((article) => {return article.hashtags[0]}).join(' OR ')
@@ -178,7 +177,6 @@ export default class AppConatiner extends Component {
     })
     .catch(error => console.log(error))
   }
-
 
   fetchSavedArticles = () => {
     fetch(`${BASE_URL}/user/articles`, {
