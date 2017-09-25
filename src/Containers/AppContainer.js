@@ -205,8 +205,6 @@ export default class AppConatiner extends Component {
     }.bind(this), 4000)
   }
 
-
-
   formatSaveArticleObject = (article) => {
     return {
       title: article.title,
